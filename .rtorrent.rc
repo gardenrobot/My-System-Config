@@ -1,0 +1,4 @@
+check_hash = yes
+directory = ~/Torrents/
+session = ~/.rtorrent_session/
+max_memory_usage = 536870912
