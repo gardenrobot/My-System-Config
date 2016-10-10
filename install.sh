@@ -17,6 +17,8 @@ rm .tmux.conf
 ln -s .myconfig/.tmux.conf .
 rm .vimrc
 ln -s .myconfig/.vimrc .
+rm .xbindkeysrc
+ln -s .myconfig/.xbindkeysrc .
 rm .ssh/config
 ln -s ../.myconfig/.ssh/config .ssh/
 echo done
