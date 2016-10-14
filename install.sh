@@ -9,6 +9,8 @@ rm .bashrc
 ln -s .myconfig/.bashrc .
 rm .gitconfig
 ln -s .myconfig/.gitconfig .
+rm .inputrc
+ln -s .myconfig/.inputrc .
 rm .rtorrent.rc
 ln -s .myconfig/.rtorrent.rc .
 rm .screenrc
