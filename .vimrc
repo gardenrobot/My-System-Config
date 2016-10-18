@@ -21,6 +21,8 @@ set shiftwidth=4
 set tabstop=4
 set smartindent
 set backspace=2
+" use space characters
+set expandtab
 
 " Bash-like Tab Indent
 set wildmode=longest,list,full
