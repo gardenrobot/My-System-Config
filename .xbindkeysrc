@@ -42,9 +42,8 @@
 "konsole"
    control+alt + t
 
-"password-gorilla"
-    m:0xc + c:56
-    Control+Alt + b 
+"google-chrome-stable --profile-directory=Default --app-id=npkoefjfcjbknoeadfkbcdpbapaamcif"
+    Control+Alt + s
 
 #
 # End of xbindkeys configuration
