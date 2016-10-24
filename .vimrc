@@ -20,6 +20,7 @@ let $BASH_ENV = "~/.bash_aliases"
 set shiftwidth=4
 set tabstop=4
 set smartindent
+set expandtab
 set backspace=2
 
 " Bash-like Tab Indent
