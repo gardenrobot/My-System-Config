@@ -24,6 +24,7 @@ set expandtab
 set backspace=2
 " use space characters
 set expandtab
+set softtabstop=4
 
 " Bash-like Tab Indent
 set wildmode=longest,list,full
