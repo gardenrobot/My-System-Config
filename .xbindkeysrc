@@ -36,7 +36,7 @@
 
 
 #U
-"google-chrome-stable"
+"firefox"
    control+alt + z
 
 "konsole"
@@ -44,10 +44,6 @@
 
 "google-chrome-stable --profile-directory=Default --app-id=npkoefjfcjbknoeadfkbcdpbapaamcif"
     Control+Alt + s
-
-#"google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki"
-"google-chrome-stable --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki"
-    Control+Alt + j
 
 #
 # End of xbindkeys configuration
