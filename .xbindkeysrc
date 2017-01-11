@@ -45,5 +45,20 @@
 "google-chrome-stable --profile-directory=Default --app-id=npkoefjfcjbknoeadfkbcdpbapaamcif"
     Control+Alt + s
 
+"brightness down"
+    F6
+
+"brightness up"
+    F7
+
+"volume mute"
+    F8
+
+"volume down"
+    F9
+
+"volume up"
+    F10
+
 #
 # End of xbindkeys configuration
