@@ -141,8 +141,10 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 nnoremap # :%s/<c-r>///gn<ESC>
 
 " DirDiff
-let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,.svn"
+let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,.svn,.git"
 highlight DiffChange term=bold ctermbg=4 guibg=DarkMagenta
 
 " Rainbox Parantheses
 au VimEnter * RainbowParenthesesToggle
+
+set tabpagemax=100
