@@ -1,6 +1,6 @@
 [user]
 	name = Sam Clotfelter
-	email = samclotf@gmail.com
+	email = samclot@protonmail.com
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)'
 [merge]
