@@ -8,3 +8,5 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[gitreview]
+	username = samclot
