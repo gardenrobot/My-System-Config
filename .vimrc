@@ -148,3 +148,5 @@ highlight DiffChange term=bold ctermbg=4 guibg=DarkMagenta
 au VimEnter * RainbowParenthesesToggle
 
 set tabpagemax=100
+
+let g:omni_sql_no_default_maps = 1
