@@ -107,7 +107,7 @@ nnoremap T :tabnew<CR>
 nnoremap J :tabprevious<CR>
 nnoremap K :tabnext<CR>
 nnoremap <silent> H :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> L :execute 'silent! tabmove ' . (tabpagenr())<CR>
+nnoremap <silent> L :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
