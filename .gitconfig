@@ -1,5 +1,5 @@
 [user]
-	name = Sam Clotfelter
+	name = Samantha Clotfelter
 	email = samclot@protonmail.com
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)'
@@ -11,3 +11,5 @@
 	prompt = false
 [gitreview]
 	username = samclot
+[core]
+	autocrlf = true
