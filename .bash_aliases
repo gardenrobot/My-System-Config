@@ -22,3 +22,4 @@ alias ag='ag --color-path=35'
 # Command line printing for korra
 alias myprint='lp -d Deskjet_3000_J310'
 
+alias gitl='git lg|head'
