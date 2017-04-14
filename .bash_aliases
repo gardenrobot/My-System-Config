@@ -23,3 +23,4 @@ alias ag='ag --color-path=35'
 alias myprint='lp -d Deskjet_3000_J310'
 
 alias gitl='git lg|head'
+alias gs='git status'
