@@ -150,3 +150,6 @@ au VimEnter * RainbowParenthesesToggle
 set tabpagemax=100
 
 let g:omni_sql_no_default_maps = 1
+
+" No newline at end of file
+set noeol
