@@ -11,5 +11,5 @@
 	prompt = false
 [gitreview]
 	username = samclot
-[core]
-	autocrlf = true
+#[core]
+#	autocrlf = true
