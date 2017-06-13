@@ -4,12 +4,15 @@
 " mkdir -p ~/.vim/autoload
 " curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
+let g:plug_threads = 1
 call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/vim-easy-align'
 Plug 'will133/vim-dirdiff'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'vim-scripts/phpfolding.vim'
 call plug#end()
 
