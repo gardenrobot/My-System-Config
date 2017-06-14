@@ -4,6 +4,6 @@ session = ~/.rtorrent_session/
 max_memory_usage = 536870912
 
 #done_fg_color=2
-color_finished_fg=2
+#color_finished_fg=2
 #active_fg_color=1
-color_active_fg=1
+#color_active_fg=1
