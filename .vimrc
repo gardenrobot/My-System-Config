@@ -13,8 +13,13 @@ Plug 'will133/vim-dirdiff'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 "Plug 'vim-scripts/phpfolding.vim'
 call plug#end()
+set laststatus=2
+set t_Co=256
+let g:airline_theme='badwolf'
 
 " Load bash aliases in shell
 let $BASH_ENV = "~/.bash_aliases"
