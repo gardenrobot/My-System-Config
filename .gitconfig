@@ -14,4 +14,4 @@
 #[core]
 #	autocrlf = true
 [color "diff"]
-	meta = yellow
+	meta = blue bold
