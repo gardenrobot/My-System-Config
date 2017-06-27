@@ -13,3 +13,5 @@
 	username = samclot
 #[core]
 #	autocrlf = true
+[color "diff"]
+	meta = yellow
