@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mfukar/robotframework-vim'
+Plug 'ciaranm/detectindent'
 "Plug 'vim-scripts/phpfolding.vim'
 call plug#end()
 set laststatus=2
