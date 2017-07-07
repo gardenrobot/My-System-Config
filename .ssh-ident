@@ -6,7 +6,14 @@
 
 DEFAULT_IDENTITY = "personal"
 
-MATCH_PATH = [
-    # (directory pattern, identity)
-    (r"thomsonreuters.com", "work"),
+MATCH_ARGV = [
+    (r"github.com", "personal"),
+
+    (r"dev", "work"),
+    (r"devint", "work"),
+    (r"qa", "work"),
+    (r"qaint", "work"),
+    (r"ppe", "work"),
+    (r"prod", "work"),
+    (r"jenkins", "work"),
 ]
