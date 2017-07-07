@@ -15,6 +15,8 @@ rm .rtorrent.rc
 ln -s .myconfig/.rtorrent.rc .
 rm .screenrc
 ln -s .myconfig/.screenrc .
+rm .ssh-ident
+ln -s .myconfig/.ssh-ident .
 rm .tmux.conf
 ln -s .myconfig/.tmux.conf .
 rm .vimrc

@@ -1,0 +1,12 @@
+# https://github.com/ccontavalli/ssh-ident
+#
+# mkdir -p ~/.bin
+# wget -O ~/.bin/ssh goo.gl/MoJuKB
+# chmod 0755 ~/.bin/ssh
+
+DEFAULT_IDENTITY = "personal"
+
+MATCH_PATH = [
+    # (directory pattern, identity)
+    (r"thomsonreuters.com", "work"),
+]
