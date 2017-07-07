@@ -1,0 +1,9 @@
+# fresh install
+https://cygwin.com/setup-x86_64.exe
+ln -s /cygdrive/c/Users/${USER}/ ~/win
+
+# update
+curl -Lo ~/win/setup.exe https://cygwin.com/setup-x86_64.exe
+
+# install packages
+~/win/setup.exe -P wget,curl,unzip,tar,vim,tmux,git
