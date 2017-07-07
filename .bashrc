@@ -43,3 +43,5 @@ stty ixany
 stty ixoff -ixon
 
 export SVN_EDITOR=vim
+
+export PATH=~/.bin/ssh:$PATH
