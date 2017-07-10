@@ -9,6 +9,7 @@ DEFAULT_IDENTITY = "personal"
 MATCH_ARGV = [
     (r"github.com", "personal"),
 
+    (r"thomsonreuters.com", "work"),
     (r"dev", "work"),
     (r"devint", "work"),
     (r"qa", "work"),
