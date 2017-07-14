@@ -25,6 +25,14 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-batter
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0
 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 
+# clear folders
+rmdir ~/Documents
+rmdir ~/Music
+rmdir ~/Pictures
+rmdir ~/Public
+rmdir ~/Templates
+rmdir ~/Videos
+
 # set up padlock.io
 # configure settings
 
