@@ -16,7 +16,8 @@ xbindkeys \
 xbindkeys-config \
 guake \
 bash-completion \
-#TODO build essentials
+build-essential \
+
 
 # mac-like window buttons
 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
