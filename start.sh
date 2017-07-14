@@ -16,6 +16,7 @@ xbindkeys \
 xbindkeys-config \
 guake \
 bash-completion \
+#TODO build essentials
 
 # mac-like window buttons
 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
@@ -33,10 +34,9 @@ rmdir ~/Public
 rmdir ~/Templates
 rmdir ~/Videos
 
-# TODO fix
 # configure guake
-mkdir ~/.gconf/apps/ -p
-unzip ~/.myconfig/guake-chromebook.zip -d ~/.gconf/apps/
+gconftool-2 -t string -s /apps/guake/keybindings/global/show_hide 'grave'
+gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Primary>grave'
 
 
 # manual work
