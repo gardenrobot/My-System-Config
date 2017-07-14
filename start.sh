@@ -33,6 +33,12 @@ rmdir ~/Public
 rmdir ~/Templates
 rmdir ~/Videos
 
+# TODO start guake and xbindkeys on startup
+
+# configure guake
+mkdir ~/.gconf/apps/ -p
+unzip ~/.myconfig/guake-chromebook.zip -d ~/.gconf/apps/
+
 # set up padlock.io
 # configure settings
 
