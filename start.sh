@@ -20,6 +20,7 @@ xbindkeys-config \
 guake \
 bash-completion \
 build-essential \
+cheese \
 
 
 # mac-like window buttons
