@@ -1,7 +1,10 @@
-ssh-keygen
+#ssh-keygen
+#git clone git@github.com:samclotf/My-System-Config.git $HOME/.myconfig
 sudo apt-get update
 sudo apt-get dist-upgrade
-git clone git@github.com:samclotf/My-System-Config.git $HOME/.myconfig
+
+ln -s id_rsa ~/.ssh/id_rsa_personal
+ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
 
 sudo apt-get install \
 vim \
