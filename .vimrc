@@ -93,10 +93,10 @@ function QuoteDelim(char)
 endf
 
 " Paste Mode
-nnoremap <C-P> :set paste<CR>:set nonumber<CR>
-nnoremap <C-O> :set nopaste<CR>:set number<CR>
-inoremap <C-P> <Esc>:set paste<CR>:set nonumber<CR>a
-inoremap <C-O> <Esc>:set nopaste<CR>:set number<CR>a
+nnoremap <C-P> :set paste<CR>:set nonumber<CR>:GitGutterDisable<CR>
+nnoremap <C-O> :set nopaste<CR>:set number<CR>:GitGutterEnable<CR>
+inoremap <C-P> <Esc>:set paste<CR>:set nonumber<CR>:GitGutterDisable<CR>a
+inoremap <C-O> <Esc>:set nopaste<CR>:set number<CR>:GitGutterEnable<CR>a
 
 " Rehighlight on indent
 vnoremap > ><CR>gvh
