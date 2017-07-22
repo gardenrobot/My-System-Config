@@ -2,3 +2,4 @@
 
 guake &
 xbindkeys &
+discord-ptb &
