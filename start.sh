@@ -26,6 +26,7 @@ bash-completion \
 build-essential \
 cheese \
 riot-web \
+gedit \
 
 
 # mac-like window buttons
