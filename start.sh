@@ -1,16 +1,19 @@
 #ssh-keygen
 #git clone git@github.com:samclotf/My-System-Config.git $HOME/.myconfig
 sudo apt-get update
-sudo apt-get dist-upgrade
+sudo apt-get dist-upgrade -y
 
 ln -s id_rsa ~/.ssh/id_rsa_personal
 ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
+
+sudo apt-get update
+sudo apt-get install -y wget
 
 sudo add-apt-repository https://riot.im/packages/debian/
 wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
 sudo apt-get update
 
-sudo apt-get install \
+sudo apt-get install -y \
 vim \
 tmux \
 curl \
