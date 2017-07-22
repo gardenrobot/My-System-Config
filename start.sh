@@ -6,6 +6,10 @@ sudo apt-get dist-upgrade
 ln -s id_rsa ~/.ssh/id_rsa_personal
 ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
 
+sudo add-apt-repository https://riot.im/packages/debian/
+wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
+sudo apt-get update
+
 sudo apt-get install \
 vim \
 tmux \
@@ -21,6 +25,7 @@ guake \
 bash-completion \
 build-essential \
 cheese \
+riot-web \
 
 
 # mac-like window buttons
@@ -45,6 +50,8 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 
 
 # manual work
+
+# disable screensaver
 
 # set up padlock.io
 # configure settings
