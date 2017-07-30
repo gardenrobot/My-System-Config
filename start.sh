@@ -30,6 +30,7 @@ build-essential \
 cheese \
 riot-web \
 gedit \
+owncloud-client \
 
 
 # mac-like window buttons
