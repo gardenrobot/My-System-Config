@@ -62,6 +62,9 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # configure settings
 
 # firefox login
+#   connect sync account
+#   install RES
+#   download setting
 
 # Add this to startup
 # ~/.myconfig/login-chromebook.sh
