@@ -36,6 +36,7 @@ riot-web \
 gedit \
 owncloud-client \
 brave \
+silversearcher-ag \
 
 
 # mac-like window buttons
