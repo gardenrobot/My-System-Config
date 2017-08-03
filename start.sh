@@ -7,10 +7,14 @@ ln -s id_rsa ~/.ssh/id_rsa_personal
 ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
 
 sudo apt-get update
-sudo apt-get install -y wget
+sudo apt-get install -y wget curl
 
 sudo add-apt-repository https://riot.im/packages/debian/
 wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
+
+curl https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+
 sudo apt-get update
 
 sudo apt-get install -y \
@@ -31,6 +35,7 @@ cheese \
 riot-web \
 gedit \
 owncloud-client \
+brave \
 
 
 # mac-like window buttons
