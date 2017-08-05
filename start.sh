@@ -37,6 +37,7 @@ gedit \
 owncloud-client \
 brave \
 silversearcher-ag \
+gimp \
 
 
 # mac-like window buttons
