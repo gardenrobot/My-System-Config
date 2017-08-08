@@ -36,7 +36,7 @@
 
 
 #U
-"brave"
+"brave --no-sandbox"
    control+alt + z
 
 "konsole"
