@@ -11,8 +11,8 @@ rm .gitconfig
 ln -s .myconfig/.gitconfig .
 rm .inputrc
 ln -s .myconfig/.inputrc .
-rm .rtorrent.rc
-ln -s .myconfig/.rtorrent.rc .
+rm .rtorrent_plain.rc
+ln -s .myconfig/.rtorrent_plain.rc .
 rm .screenrc
 ln -s .myconfig/.screenrc .
 rm .ssh-ident
