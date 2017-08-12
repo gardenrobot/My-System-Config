@@ -2,3 +2,4 @@ check_hash = yes
 directory = ~/.torrent_plain/
 session = ~/.rtorrent_plain_session/
 max_memory_usage = 536870912
+port_range = 6962
