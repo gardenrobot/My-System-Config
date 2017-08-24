@@ -80,3 +80,6 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 
 # Install discord
 # wget -O ~/Downloads/discord-ptb-0.0.1.deb https://discordapp.com/api/download/ptb?platform=linux&format=deb
+
+# Install OnlyOffice
+# wget -O ~/Downloads/onlyoffice.deb 'http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb'
