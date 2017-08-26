@@ -41,6 +41,7 @@ brave \
 silversearcher-ag \
 gimp \
 traceroute \
+vlc \
 
 
 # mac-like window buttons
