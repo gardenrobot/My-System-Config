@@ -40,6 +40,7 @@ owncloud-client \
 brave \
 silversearcher-ag \
 gimp \
+traceroute \
 
 
 # mac-like window buttons
