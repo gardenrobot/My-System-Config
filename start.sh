@@ -42,6 +42,7 @@ silversearcher-ag \
 gimp \
 traceroute \
 vlc \
+htop \
 
 
 # mac-like window buttons
