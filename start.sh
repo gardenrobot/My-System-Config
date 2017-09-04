@@ -43,6 +43,7 @@ gimp \
 traceroute \
 vlc \
 htop \
+ncdu \
 
 
 # mac-like window buttons
