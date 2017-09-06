@@ -44,6 +44,7 @@ traceroute \
 vlc \
 htop \
 ncdu \
+redshift-gtk \
 
 
 # mac-like window buttons
