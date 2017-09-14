@@ -2,7 +2,7 @@
 	name = Samantha Clotfelter
 	email = samclot@protonmail.com
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)'
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) %an'
 	co = checkout
 [merge]
 	tool = vimdiff
