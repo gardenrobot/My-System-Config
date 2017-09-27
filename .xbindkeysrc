@@ -42,23 +42,23 @@
 "konsole"
    control+alt + t
 
-"google-chrome-stable --profile-directory=Default --app-id=npkoefjfcjbknoeadfkbcdpbapaamcif"
-    Control+Alt + s
+"padlock-io"
+   Control+Alt + a
 
 "brightness down"
-    F6
+   F6
 
 "brightness up"
-    F7
+   F7
 
 "volume mute"
-    F8
+   F8
 
 "volume down"
-    F9
+   F9
 
 "volume up"
-    F10
+   F10
 
 #
 # End of xbindkeys configuration
