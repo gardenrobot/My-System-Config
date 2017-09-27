@@ -45,6 +45,7 @@ vlc \
 htop \
 ncdu \
 redshift-gtk \
+nano \
 
 
 # mac-like window buttons
