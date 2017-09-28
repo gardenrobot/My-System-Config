@@ -14,9 +14,8 @@ sudo apt-get install -y wget curl
 sudo add-apt-repository https://riot.im/packages/debian/
 wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
 
-# brave
-curl https://s3-us-west-2.amazonaws.com/brave-apt/keys.asc | sudo apt-key add -
-echo "deb [arch=amd64] https://s3-us-west-2.amazonaws.com/brave-apt `lsb_release -sc` main" | sudo tee -a /etc/apt/sources.list.d/brave-`lsb_release -sc`.list
+# firefox beta
+sudo add-apt-repository ppa:mozillateam/firefox-next
 
 sudo apt-get update
 sudo apt-get install -y \
@@ -27,7 +26,6 @@ wget \
 git \
 screen \
 firefox \
-chromium-browser \
 xbindkeys \
 xbindkeys-config \
 guake \
@@ -37,7 +35,6 @@ cheese \
 riot-web \
 gedit \
 owncloud-client \
-brave \
 silversearcher-ag \
 gimp \
 traceroute \
