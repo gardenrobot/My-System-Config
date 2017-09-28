@@ -36,7 +36,7 @@
 
 
 #U
-"brave --no-sandbox"
+"firefox"
    control+alt + z
 
 "konsole"
