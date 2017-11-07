@@ -43,6 +43,7 @@ htop \
 ncdu \
 redshift-gtk \
 nano \
+ffmpeg \
 
 
 # mac-like window buttons
