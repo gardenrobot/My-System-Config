@@ -44,6 +44,7 @@ ncdu \
 redshift-gtk \
 nano \
 ffmpeg \
+evince \
 
 
 # mac-like window buttons
