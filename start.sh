@@ -45,6 +45,7 @@ redshift-gtk \
 nano \
 ffmpeg \
 evince \
+speedcrunch \
 
 
 # mac-like window buttons
