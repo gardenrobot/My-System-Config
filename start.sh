@@ -46,6 +46,7 @@ nano \
 ffmpeg \
 evince \
 speedcrunch \
+links \
 
 
 # mac-like window buttons
