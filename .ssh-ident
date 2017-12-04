@@ -10,11 +10,4 @@ MATCH_ARGV = [
     (r"github.com", "personal"),
 
     (r"thomsonreuters.com", "work"),
-    (r"dev", "work"),
-    (r"devint", "work"),
-    (r"qa", "work"),
-    (r"qaint", "work"),
-    (r"ppe", "work"),
-    (r"prod", "work"),
-    (r"jenkins", "work"),
 ]
