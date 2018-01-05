@@ -60,5 +60,8 @@
 "volume up ; ~/.myconfig/volume-show.sh"
    F10
 
+"killall owncloud ; owncloud"
+   Control+Alt + o
+
 #
 # End of xbindkeys configuration
