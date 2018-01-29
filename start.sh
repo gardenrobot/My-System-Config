@@ -83,7 +83,7 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # ~/.myconfig/login-chromebook.sh
 
 # Install discord
-# wget -O ~/Downloads/discord-ptb-0.0.1.deb https://discordapp.com/api/download/ptb?platform=linux&format=deb
+# links 'https://discordapp.com/api/download/ptb?platform=linux&format=deb'
 
 # Adjust size of top panel
 
