@@ -88,3 +88,5 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # Adjust size of top panel
 
 # Use international keyboard
+
+# Set wallpaper
