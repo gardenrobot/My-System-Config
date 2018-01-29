@@ -42,7 +42,7 @@
 "konsole"
    control+alt + t
 
-"padlock-io"
+"~/.bin/padlock-io"
    Control+Alt + a
 
 "brightness down ; ~/.myconfig/brightness-show.sh"
