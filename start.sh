@@ -89,3 +89,5 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # wget -O ~/Downloads/onlyoffice.deb 'http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb'
 
 # Adjust size of top panel
+
+# Use international keyboard
