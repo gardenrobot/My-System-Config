@@ -90,3 +90,6 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # Use international keyboard
 
 # Set wallpaper
+
+# Set up Reddit notifications
+# git clone git@github.com:samclotf/reddit-search-notifications.git ~/.reddit-search-notifications
