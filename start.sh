@@ -14,9 +14,6 @@ sudo apt-get install -y wget curl
 sudo add-apt-repository https://riot.im/packages/debian/
 wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
 
-# firefox beta
-sudo add-apt-repository ppa:mozillateam/firefox-next
-
 sudo apt-get update
 sudo apt-get install -y \
 vim \
