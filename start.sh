@@ -44,6 +44,7 @@ ffmpeg \
 evince \
 speedcrunch \
 links \
+python-pip \
 
 
 # mac-like window buttons
