@@ -45,20 +45,23 @@
 "padlock-io"
    Control+Alt + a
 
-"brightness down"
+"brightness down ; ~/.myconfig/brightness-show.sh"
    F6
 
-"brightness up"
+"brightness up ; ~/.myconfig/brightness-show.sh"
    F7
 
-"volume mute"
+"volume mute ; ~/.myconfig/volume-show.sh"
    F8
 
-"volume down"
+"volume down ; ~/.myconfig/volume-show.sh"
    F9
 
-"volume up"
+"volume up ; ~/.myconfig/volume-show.sh"
    F10
+
+"killall owncloud ; owncloud"
+   Control+Alt + o
 
 #
 # End of xbindkeys configuration
