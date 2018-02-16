@@ -14,9 +14,6 @@ sudo apt-get install -y wget curl
 sudo add-apt-repository https://riot.im/packages/debian/
 wget -qO - https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
 
-# firefox beta
-sudo add-apt-repository ppa:mozillateam/firefox-next
-
 sudo apt-get update
 sudo apt-get install -y \
 vim \
@@ -44,6 +41,10 @@ ncdu \
 redshift-gtk \
 nano \
 ffmpeg \
+evince \
+speedcrunch \
+links \
+python-pip \
 
 
 # mac-like window buttons
@@ -83,9 +84,13 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # ~/.myconfig/login-chromebook.sh
 
 # Install discord
-# wget -O ~/Downloads/discord-ptb-0.0.1.deb https://discordapp.com/api/download/ptb?platform=linux&format=deb
-
-# Install OnlyOffice
-# wget -O ~/Downloads/onlyoffice.deb 'http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb'
+# links 'https://discordapp.com/api/download/ptb?platform=linux&format=deb'
 
 # Adjust size of top panel
+
+# Use international keyboard
+
+# Set wallpaper
+
+# Set up Reddit notifications
+# git clone git@github.com:samclotf/reddit-search-notifications.git ~/.reddit-search-notifications
