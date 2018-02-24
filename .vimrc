@@ -1,25 +1,27 @@
 " Plugins
 "
-" If vim-plug is not installed, run these commands:
-" mkdir -p ~/.vim/autoload
-" curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" If Vundle is not installed, run this command:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "
-let g:plug_threads = 1
-call plug#begin('~/.vim/plugged')
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'altercation/vim-colors-solarized'
-Plug 'junegunn/vim-easy-align'
-Plug 'will133/vim-dirdiff'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'mfukar/robotframework-vim'
-Plug 'ciaranm/detectindent'
-"Plug 'vim-scripts/phpfolding.vim'
-call plug#end()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'will133/vim-dirdiff'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mfukar/robotframework-vim'
+Plugin 'ciaranm/detectindent'
+call vundle#end()
+"filetype plugin indent on
 set laststatus=2
+
 set t_Co=256
 let g:airline_theme='badwolf'
 
