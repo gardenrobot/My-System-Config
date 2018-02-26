@@ -45,6 +45,8 @@ evince \
 speedcrunch \
 links \
 python-pip \
+alltray \
+evolution \
 
 
 # mac-like window buttons
