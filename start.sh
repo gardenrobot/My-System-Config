@@ -25,7 +25,7 @@ screen \
 firefox \
 xbindkeys \
 xbindkeys-config \
-guake \
+tilda \
 bash-completion \
 build-essential \
 cheese \

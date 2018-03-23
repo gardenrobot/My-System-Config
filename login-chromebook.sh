@@ -1,6 +1,6 @@
 #!/bin/bash
 
-guake &
+tilda &
 xbindkeys &
 discord-ptb &
 redshift-gtk &
