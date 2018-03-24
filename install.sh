@@ -24,7 +24,10 @@ ln -s .myconfig/.vimrc .
 rm .xbindkeysrc
 ln -s .myconfig/.xbindkeysrc .
 rm .ssh/config
+# .ssh/config installed by ansible
 mkdir -p .config/tilda/
 rm .config/tilda/config_0
 ln -s ../../../.myconfig/tilda_config .config/tilda/config_0
+rm .config/tint2/tint2rc
+ln -s ../../../.myconfig/tint2rc .config/tint2/tint2rc
 echo done
