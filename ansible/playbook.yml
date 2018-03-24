@@ -75,8 +75,32 @@
     args:
       chdir: "{{config_dest}}"
 
-  - name: install system config
-    command: ~/.myconfig/install.sh
+  - name: make config dirs
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+    - ~/.config/tilda/
+    - ~/.config/tint2/
+
+  - name: link user config files
+    file:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      state: link
+    with_items:
+    - { src: '~/.myconfig/tilda_config',  dest: '~/.config/tilda/config_0' }
+    - { src: '~/.myconfig/tint2rc',       dest: '~/.config/tint2/tint2rc' }
+    - { src: '~/.myconfig/.agignore',     dest: '~/.agignore' }
+    - { src: '~/.myconfig/.bash_aliases', dest: '~/.bash_aliases' }
+    - { src: '~/.myconfig/.bashrc',       dest: '~/.bashrc' }
+    - { src: '~/.myconfig/.gitconfig',    dest: '~/.gitconfig' }
+    - { src: '~/.myconfig/.inputrc',      dest: '~/.inputrc' }
+    - { src: '~/.myconfig/.ssh-ident',    dest: '~/.ssh-ident' }
+    - { src: '~/.myconfig/.tmux.conf',    dest: '~/.tmux.conf' }
+    - { src: '~/.myconfig/.vimrc',        dest: '~/.vimrc' }
+    - { src: '~/.myconfig/.xbindkeysrc',  dest: '~/.xbindkeysrc' }
+    - { src: '~/.myconfig/.xinitrc',      dest: '~/.xinitrc' }
 
   - name: decrypt ssh config
     shell: echo "{{ ssh_config }}" > ~/.ssh/config
@@ -90,5 +114,3 @@
     shell: yes | gdebi /tmp/ansible-discord.deb
     become: yes
     become_method: sudo
-    tags:
-      - testing
