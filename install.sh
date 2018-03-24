@@ -30,4 +30,6 @@ rm .config/tilda/config_0
 ln -s ../../../.myconfig/tilda_config .config/tilda/config_0
 rm .config/tint2/tint2rc
 ln -s ../../../.myconfig/tint2rc .config/tint2/tint2rc
+rm .xinitrc
+ln -s .myconfig/.xinitrc .
 echo done
