@@ -21,7 +21,6 @@ tmux \
 curl \
 wget \
 git \
-screen \
 firefox \
 xbindkeys \
 xbindkeys-config \
@@ -46,12 +45,12 @@ links \
 python-pip \
 python3-pip \
 alltray \
-evolution \
+evolution \ # different mail client?
 keepassx \
 gpicview \
 libreoffice \
 cmus \
-# vlc? 
+tint2 \
 
 
 # mac-like window buttons
