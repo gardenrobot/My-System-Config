@@ -63,5 +63,17 @@
 "killall owncloud ; owncloud"
    Control+Alt + o
 
+"cmus-remote --prev"
+    m:0x5 + c:59
+    Control+Shift + comma 
+
+"cmus-remote --next"
+    m:0x5 + c:60
+    Control+Shift + period 
+
+"cmus-remote -u"
+    m:0x5 + c:61
+    Control+Shift + slash 
+
 #
 # End of xbindkeys configuration
