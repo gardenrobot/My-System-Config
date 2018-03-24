@@ -2,34 +2,25 @@
 
 cd $HOME
 rm .agignore
-ln -s .myconfig/.agignore .
+ln -s .myconfig/agignore .agignore
 rm .bash_aliases
-ln -s .myconfig/.bash_aliases .
+ln -s .myconfig/bash_aliases .bash_aliases
 rm .bashrc
-ln -s .myconfig/.bashrc .
+ln -s .myconfig/bashrc .bashrc
 rm .gitconfig
-ln -s .myconfig/.gitconfig .
+ln -s .myconfig/gitconfig .gitconfig
 rm .inputrc
-ln -s .myconfig/.inputrc .
+ln -s .myconfig/inputrc .inputrc
 rm .rtorrent_plain.rc
-ln -s .myconfig/.rtorrent_plain.rc .
+ln -s .myconfig/rtorrent_plain.rc .rtorrent_plain.rc
 rm .screenrc
-ln -s .myconfig/.screenrc .
+ln -s .myconfig/screenrc .screenrc
 rm .ssh-ident
-ln -s .myconfig/.ssh-ident .
+ln -s .myconfig/ssh-ident .ssh-ident
 rm .tmux.conf
-ln -s .myconfig/.tmux.conf .
+ln -s .myconfig/tmux.conf .tmux.conf
 rm .vimrc
-ln -s .myconfig/.vimrc .
+ln -s .myconfig/vimrc .vimrc
 rm .xbindkeysrc
-ln -s .myconfig/.xbindkeysrc .
-rm .ssh/config
-# .ssh/config installed by ansible
-mkdir -p .config/tilda/
-rm .config/tilda/config_0
-ln -s ../../../.myconfig/tilda_config .config/tilda/config_0
-rm .config/tint2/tint2rc
-ln -s ../../../.myconfig/tint2rc .config/tint2/tint2rc
-rm .xinitrc
-ln -s .myconfig/.xinitrc .
+ln -s .myconfig/xbindkeysrc .xbindkeys
 echo done
