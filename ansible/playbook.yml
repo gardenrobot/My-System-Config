@@ -59,13 +59,10 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,screen,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,owncloud-client,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,alltray,evolution,riot-web
+      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,evolution,keepassx,gpicview,libreoffice,cmus,tint2
       state: latest
     become: yes
     become_method: sudo
-
-  - name: mac-like window buttons
-    shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
 
   - name: clone system config
     git:
