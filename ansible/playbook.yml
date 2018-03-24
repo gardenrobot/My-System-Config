@@ -1,0 +1,97 @@
+---
+- hosts: chromebook2
+  vars:
+    - ssh_config: "{{ lookup('file', '~/.myconfig/.ssh/config') }}"
+    - git_ssh: "git@github.com:samclotf/My-System-Config.git"
+    - git_http: "https://github.com/samclotf/My-System-Config.git"
+    - config_dest: ~/.myconfig/
+  tasks:
+
+  - name: remove folders
+    command: "rm ~/{{ item }}"
+    with_items:
+    - Documents
+    - Music
+    - Pictures
+    - Public
+    - Templates
+    - Videos
+    ignore_errors: yes
+
+  - name: check if ssh keys exist
+    stat: path=~/.ssh/id_rsa
+    register: ssh_keys_exist
+
+  - name: generate ssh keys
+    when: not ssh_keys_exist
+    command: ssh-keygen -f ~/.ssh/id_rsa -N ''
+
+  - name: link ssh keys
+    command: "{{ item }}"
+    with_items:
+    - ln -s id_rsa ~/.ssh/id_rsa_personal
+    - ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
+    ignore_errors: yes
+
+  - name: add repos
+    apt_repository:
+      repo: deb https://riot.im/packages/debian/ xenial main
+      state: present
+    become: yes
+    become_method: sudo
+
+  - name: download repo keys
+    get_url:
+      url: https://riot.im/packages/debian/repo-key.asc
+      dest: /tmp/riot-key.asc
+
+  - name: add repo keys
+    command: apt-key add /tmp/riot-key.asc
+    become: yes
+    become_method: sudo
+
+  - name: upgrade packages
+    apt:
+      upgrade: dist
+      update_cache: yes
+    become: yes
+    become_method: sudo
+
+  - name: install packages
+    apt:
+      name: wget,curl,vim,tmux,curl,wget,git,screen,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,owncloud-client,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,alltray,evolution,riot-web
+      state: latest
+    become: yes
+    become_method: sudo
+
+  - name: mac-like window buttons
+    shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
+
+  - name: clone system config
+    git:
+      repo: "{{git_http}}"
+      dest: "{{config_dest}}"
+      accept_hostkey: yes
+
+  - name: use ssh repo
+    command: git remote set-url origin "{{git_ssh}}"
+    args:
+      chdir: "{{config_dest}}"
+
+  - name: install system config
+    command: ~/.myconfig/install.sh
+
+  - name: decrypt ssh config
+    shell: echo "{{ ssh_config }}" > ~/.ssh/config
+
+  - name: download discord
+    get_url:
+      url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
+      dest: /tmp/ansible-discord.deb
+
+  - name: install discord
+    shell: yes | gdebi /tmp/ansible-discord.deb
+    become: yes
+    become_method: sudo
+    tags:
+      - testing

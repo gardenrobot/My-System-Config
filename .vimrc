@@ -19,7 +19,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mfukar/robotframework-vim'
 Plugin 'ciaranm/detectindent'
 call vundle#end()
-"filetype plugin indent on
+filetype plugin indent on
 set laststatus=2
 
 set t_Co=256
