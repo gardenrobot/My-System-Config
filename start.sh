@@ -30,7 +30,6 @@ bash-completion \
 build-essential \
 cheese \
 riot-web \
-gedit \
 owncloud-client \
 silversearcher-ag \
 gimp \
@@ -45,9 +44,14 @@ evince \
 speedcrunch \
 links \
 python-pip \
+python3-pip \
 alltray \
 evolution \
 keepassx \
+gpicview \
+libreoffice \
+cmus \
+# vlc? 
 
 
 # mac-like window buttons
