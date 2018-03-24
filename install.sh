@@ -24,4 +24,7 @@ ln -s .myconfig/.vimrc .
 rm .xbindkeysrc
 ln -s .myconfig/.xbindkeysrc .
 rm .ssh/config
+mkdir -p .config/tilda/
+rm .config/tilda/config_0
+ln -s ../../../.myconfig/tilda_config .config/tilda/config_0
 echo done
