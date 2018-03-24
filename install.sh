@@ -24,5 +24,4 @@ ln -s .myconfig/.vimrc .
 rm .xbindkeysrc
 ln -s .myconfig/.xbindkeysrc .
 rm .ssh/config
-gpg --decrypt ~/.myconfig/.ssh/config.gpg > ~/.ssh/config
 echo done
