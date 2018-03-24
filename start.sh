@@ -21,16 +21,14 @@ tmux \
 curl \
 wget \
 git \
-screen \
 firefox \
 xbindkeys \
 xbindkeys-config \
-guake \
+tilda \
 bash-completion \
 build-essential \
 cheese \
 riot-web \
-gedit \
 owncloud-client \
 silversearcher-ag \
 gimp \
@@ -45,8 +43,14 @@ evince \
 speedcrunch \
 links \
 python-pip \
+python3-pip \
 alltray \
-evolution \
+evolution \ # different mail client?
+keepassx \
+gpicview \
+libreoffice \
+cmus \
+tint2 \
 
 
 # mac-like window buttons
@@ -73,9 +77,6 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # manual work
 
 # disable screensaver
-
-# set up padlock.io
-# configure settings
 
 # firefox login
 #   connect sync account

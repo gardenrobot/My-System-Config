@@ -42,6 +42,8 @@ export EDITOR="$VISUAL"
 stty ixany
 stty ixoff -ixon
 
+export LANG=C.UTF-8
+
 export SVN_EDITOR=vim
 
 export PATH=~/.bin/:$PATH
