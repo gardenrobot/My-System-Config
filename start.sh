@@ -47,6 +47,7 @@ links \
 python-pip \
 alltray \
 evolution \
+keepassx \
 
 
 # mac-like window buttons
@@ -73,9 +74,6 @@ gconftool-2 -t string -s /apps/guake/keybindings/local/toggle_fullscreen '<Prima
 # manual work
 
 # disable screensaver
-
-# set up padlock.io
-# configure settings
 
 # firefox login
 #   connect sync account
