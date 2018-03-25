@@ -1,14 +1,18 @@
 ---
 - hosts: chromebook2
   vars:
-    - ssh_config: "{{ lookup('file', '~/.myconfig/.ssh/config') }}"
+    - ssh_config: "{{ lookup('file', '~/.myconfig/ssh/config.vault') }}"
     - git_ssh: "git@github.com:samclotf/My-System-Config.git"
     - git_http: "https://github.com/samclotf/My-System-Config.git"
     - config_dest: ~/.myconfig/
+    - vundle_repo: https://github.com/VundleVim/Vundle.vim.git
+    - vundle_dest: ~/.vim/bundle/Vundle.vim
   tasks:
 
   - name: remove folders
-    command: "rm ~/{{ item }}"
+    file:
+      path: "{{ item }}"
+      state: absent
     with_items:
     - Documents
     - Music
@@ -16,7 +20,6 @@
     - Public
     - Templates
     - Videos
-    ignore_errors: yes
 
   - name: check if ssh keys exist
     stat: path=~/.ssh/id_rsa
@@ -27,11 +30,13 @@
     command: ssh-keygen -f ~/.ssh/id_rsa -N ''
 
   - name: link ssh keys
-    command: "{{ item }}"
+    file:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      state: link
     with_items:
-    - ln -s id_rsa ~/.ssh/id_rsa_personal
-    - ln -s id_rsa.pub ~/.ssh/id_rsa_personal.pub
-    ignore_errors: yes
+    - { src: '~/.ssh/id_rsa_personal',  dest: 'id_rsa' }
+    - { src: '~/.ssh/id_rsa_personal.pub',  dest: 'id_rsa.pub' }
 
   - name: add repos
     apt_repository:
@@ -69,6 +74,7 @@
       repo: "{{git_http}}"
       dest: "{{config_dest}}"
       accept_hostkey: yes
+    ignore_errors: yes # TODO remove this. This is for development on same machine running ansible.
 
   - name: use ssh repo
     command: git remote set-url origin "{{git_ssh}}"
@@ -91,16 +97,16 @@
     with_items:
     - { src: '~/.myconfig/tilda_config',  dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',       dest: '~/.config/tint2/tint2rc' }
-    - { src: '~/.myconfig/.agignore',     dest: '~/.agignore' }
-    - { src: '~/.myconfig/.bash_aliases', dest: '~/.bash_aliases' }
-    - { src: '~/.myconfig/.bashrc',       dest: '~/.bashrc' }
-    - { src: '~/.myconfig/.gitconfig',    dest: '~/.gitconfig' }
-    - { src: '~/.myconfig/.inputrc',      dest: '~/.inputrc' }
-    - { src: '~/.myconfig/.ssh-ident',    dest: '~/.ssh-ident' }
-    - { src: '~/.myconfig/.tmux.conf',    dest: '~/.tmux.conf' }
-    - { src: '~/.myconfig/.vimrc',        dest: '~/.vimrc' }
-    - { src: '~/.myconfig/.xbindkeysrc',  dest: '~/.xbindkeysrc' }
-    - { src: '~/.myconfig/.xinitrc',      dest: '~/.xinitrc' }
+    - { src: '~/.myconfig/agignore',     dest: '~/.agignore' }
+    - { src: '~/.myconfig/bash_aliases', dest: '~/.bash_aliases' }
+    - { src: '~/.myconfig/bashrc',       dest: '~/.bashrc' }
+    - { src: '~/.myconfig/gitconfig',    dest: '~/.gitconfig' }
+    - { src: '~/.myconfig/inputrc',      dest: '~/.inputrc' }
+    - { src: '~/.myconfig/ssh-ident',    dest: '~/.ssh-ident' }
+    - { src: '~/.myconfig/tmux.conf',    dest: '~/.tmux.conf' }
+    - { src: '~/.myconfig/vimrc',        dest: '~/.vimrc' }
+    - { src: '~/.myconfig/xbindkeysrc',  dest: '~/.xbindkeysrc' }
+    - { src: '~/.myconfig/xinitrc',      dest: '~/.xinitrc' }
 
   - name: decrypt ssh config
     shell: echo "{{ ssh_config }}" > ~/.ssh/config
@@ -114,3 +120,15 @@
     shell: yes | gdebi /tmp/ansible-discord.deb
     become: yes
     become_method: sudo
+    args:
+      creates: /usr/bin/discord-ptb
+
+    # vim plugins
+  - name: install vim plugin manager
+    git:
+      repo: "{{vundle_repo}}"
+      dest: "{{vundle_dest}}"
+      accept_hostkey: yes
+
+  - name: install vim plugins
+    shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
