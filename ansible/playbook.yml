@@ -85,6 +85,7 @@
     with_items:
     - ~/.config/tilda/
     - ~/.config/tint2/
+    - ~/.config/keepassx2/
     - ~/.fluxbox
 
   - name: link user config files
@@ -100,6 +101,7 @@
     - { src: '~/.myconfig/inputrc',         dest: '~/.inputrc' }
     - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
     - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
+    - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx/keepassx2.ini' }
     - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
     - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
@@ -133,3 +135,8 @@
 
   - name: install vim plugins
     shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+
+  - name: download password file
+    get_url:
+      url: https://nc3.jaba.hosting/s/Fow9dWpKt6Wnw5P/download
+      dest: ~/.old.kdbx
