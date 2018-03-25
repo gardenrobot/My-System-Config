@@ -21,13 +21,10 @@
     - Templates
     - Videos
 
-  - name: check if ssh keys exist
-    stat: path=~/.ssh/id_rsa
-    register: ssh_keys_exist
-
   - name: generate ssh keys
-    when: not ssh_keys_exist
     command: ssh-keygen -f ~/.ssh/id_rsa -N ''
+    args:
+      creates: ~/.ssh/id_rsa
 
   - name: link ssh keys
     file:
@@ -35,8 +32,8 @@
       dest: "{{ item.dest }}"
       state: link
     with_items:
-    - { src: '~/.ssh/id_rsa_personal',  dest: 'id_rsa' }
-    - { src: '~/.ssh/id_rsa_personal.pub',  dest: 'id_rsa.pub' }
+    - { src: '~/.ssh/id_rsa_personal',      dest: '~/.ssh/id_rsa' }
+    - { src: '~/.ssh/id_rsa_personal.pub',  dest: '~/.ssh/id_rsa.pub' }
 
   - name: add repos
     apt_repository:
@@ -88,6 +85,7 @@
     with_items:
     - ~/.config/tilda/
     - ~/.config/tint2/
+    - ~/.fluxbox
 
   - name: link user config files
     file:
@@ -95,21 +93,24 @@
       dest: "{{ item.dest }}"
       state: link
     with_items:
-    - { src: '~/.myconfig/tilda_config',  dest: '~/.config/tilda/config_0' }
-    - { src: '~/.myconfig/tint2rc',       dest: '~/.config/tint2/tint2rc' }
-    - { src: '~/.myconfig/agignore',     dest: '~/.agignore' }
-    - { src: '~/.myconfig/bash_aliases', dest: '~/.bash_aliases' }
-    - { src: '~/.myconfig/bashrc',       dest: '~/.bashrc' }
-    - { src: '~/.myconfig/gitconfig',    dest: '~/.gitconfig' }
-    - { src: '~/.myconfig/inputrc',      dest: '~/.inputrc' }
-    - { src: '~/.myconfig/ssh-ident',    dest: '~/.ssh-ident' }
-    - { src: '~/.myconfig/tmux.conf',    dest: '~/.tmux.conf' }
-    - { src: '~/.myconfig/vimrc',        dest: '~/.vimrc' }
-    - { src: '~/.myconfig/xbindkeysrc',  dest: '~/.xbindkeysrc' }
-    - { src: '~/.myconfig/xinitrc',      dest: '~/.xinitrc' }
+    - { src: '~/.myconfig/agignore',        dest: '~/.agignore' }
+    - { src: '~/.myconfig/bash_aliases',    dest: '~/.bash_aliases' }
+    - { src: '~/.myconfig/bashrc',          dest: '~/.bashrc' }
+    - { src: '~/.myconfig/gitconfig',       dest: '~/.gitconfig' }
+    - { src: '~/.myconfig/inputrc',         dest: '~/.inputrc' }
+    - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
+    - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
+    - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
+    - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
+    - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
+    - { src: '~/.myconfig/tmux.conf',       dest: '~/.tmux.conf' }
+    - { src: '~/.myconfig/vimrc',           dest: '~/.vimrc' }
+    - { src: '~/.myconfig/xbindkeysrc',     dest: '~/.xbindkeysrc' }
+    - { src: '~/.myconfig/xinitrc',         dest: '~/.xinitrc' }
 
-  - name: decrypt ssh config
-    shell: echo "{{ ssh_config }}" > ~/.ssh/config
+    #- name: decrypt ssh config
+    #shell: echo "{{ ssh_config }}" > ~/.ssh/config
+    # TODO uncomment, requires vault password
 
   - name: download discord
     get_url:
