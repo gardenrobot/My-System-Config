@@ -61,7 +61,7 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,evolution,keepassx,gpicview,libreoffice,cmus,tint2
+      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,evolution,keepassx,gpicview,libreoffice,cmus,tint2
       state: latest
     become: yes
     become_method: sudo
@@ -126,6 +126,7 @@
     args:
       creates: ~/.ssh/config
 
+  # TODO combine .deb installation tasks
   - name: download discord
     get_url:
       url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
@@ -137,6 +138,19 @@
     become_method: sudo
     args:
       creates: /usr/bin/discord-ptb
+
+  # This version may be out of date. When the repo is released, use that.
+  - name: download bridge
+    get_url:
+      url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
+      dest: /tmp/ansible-bridge.deb
+
+  - name: install bridge
+    shell: yes | gdebi /tmp/ansible-bridge.deb
+    become: yes
+    become_method: sudo
+    args:
+      creates: /usr/bin/Desktop-Bridge
 
     # vim plugins
   - name: install vim plugin manager
@@ -157,3 +171,4 @@
     pip:
       name: tootstream
       executable: pip3
+
