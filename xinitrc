@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tilda &
 xbindkeys &
 #discord-ptb & # TODO uncomment, loading this will slow development
