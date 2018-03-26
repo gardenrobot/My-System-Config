@@ -94,6 +94,7 @@
       state: absent
     with_items: # TODO make these variables less redundant
     - ~/.bashrc
+    - ~/.config/lxpanel/LXDE/panels/panel
 
 
   - name: link user config files
@@ -110,6 +111,7 @@
     - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
     - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
     - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx2/keepassx2.ini' }
+    - { src: '~/.myconfig/lxde_panel',      dest: '~/.config/lxpanel/LXDE/panels/panel' }
     - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
     - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
@@ -148,3 +150,8 @@
     get_url:
       url: https://nc3.jaba.hosting/s/Fow9dWpKt6Wnw5P/download
       dest: ~/.old.kdbx
+
+  - name: install tootstream
+    pip:
+      name: tootstream
+      executable: pip3
