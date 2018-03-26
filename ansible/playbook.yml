@@ -22,9 +22,9 @@
     - Videos
 
   - name: generate ssh keys
-    command: ssh-keygen -f ~/.ssh/id_rsa -N ''
+    command: ssh-keygen -f ~/.ssh/id_rsa_personal -N ''
     args:
-      creates: ~/.ssh/id_rsa
+      creates: ~/.ssh/id_rsa_personal
 
   - name: link ssh keys
     file:
@@ -88,6 +88,14 @@
     - ~/.config/keepassx2/
     - ~/.fluxbox
 
+  - name: remove existing user config files
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_items: # TODO make these variables less redundant
+    - ~/.bashrc
+
+
   - name: link user config files
     file:
       src: "{{ item.src }}"
@@ -101,7 +109,7 @@
     - { src: '~/.myconfig/inputrc',         dest: '~/.inputrc' }
     - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
     - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
-    - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx/keepassx2.ini' }
+    - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx2/keepassx2.ini' }
     - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
     - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
