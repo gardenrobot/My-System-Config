@@ -35,6 +35,9 @@ set smartindent
 set backspace=2
 set softtabstop=4
 
+" Yaml tabs
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2 
+
 " Bash-like Tab Indent
 set wildmode=longest,list,full
 set wildmenu
