@@ -95,6 +95,7 @@
     with_items: # TODO make these variables less redundant
     - ~/.bashrc
     - ~/.config/lxpanel/LXDE/panels/panel
+    - ~/.config/tilda/config_0
 
 
   - name: link user config files
@@ -120,9 +121,10 @@
     - { src: '~/.myconfig/xbindkeysrc',     dest: '~/.xbindkeysrc' }
     - { src: '~/.myconfig/xinitrc',         dest: '~/.xinitrc' }
 
-    #- name: decrypt ssh config
-    #shell: echo "{{ ssh_config }}" > ~/.ssh/config
-    # TODO uncomment, requires vault password
+  - name: decrypt ssh config
+    shell: echo "{{ ssh_config }}" > ~/.ssh/config
+    args:
+      creates: ~/.ssh/config
 
   - name: download discord
     get_url:
