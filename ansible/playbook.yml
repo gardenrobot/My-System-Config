@@ -213,3 +213,13 @@
   - name: set wallpaper
     shell: DISPLAY=:1.0 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/ownCloud/Wallpaper/shards-pink.jpg
     ignore_errors: yes # This fails if the wallpaper settings menu has not been opened yet. Fix later.
+
+  - name: update rc.local
+    copy:
+      src: ~/.myconfig/chromebook/rc.local
+      dest: /etc/rc.local
+      owner: root
+      group: root
+      mode: u=rwx,g=rx,o=rx
+    become: yes
+    become_method: sudo
