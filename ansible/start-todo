@@ -1,16 +1,5 @@
 # Things to bring into ansible
 
-# power
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -s 0
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
-
-# manual work
-
-# disable screensaver
-
-# set up padlock.io
-# configure settings
 
 # firefox login
 #   connect sync account
@@ -20,11 +9,7 @@ xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 # Add this to startup
 # ~/.myconfig/login-chromebook.sh
 
-# Adjust size of top panel
-
-# Use international keyboard
-
-# Set wallpaper
-
 # Set up Reddit notifications
 # git clone git@github.com:samclotf/reddit-search-notifications.git ~/.reddit-search-notifications
+
+# Refactor and clean up all this shit
