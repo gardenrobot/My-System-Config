@@ -1,15 +1,13 @@
-# Things to bring into ansible
+Things to bring into ansible
 
 
-# firefox login
-#   connect sync account
-#   install RES
-#   download setting
+Add this to startup
+~/.myconfig/login-chromebook.sh
 
-# Add this to startup
-# ~/.myconfig/login-chromebook.sh
+Refactor and clean up all this shit
 
-# Set up Reddit notifications
-# git clone git@github.com:samclotf/reddit-search-notifications.git ~/.reddit-search-notifications
+new email client
 
-# Refactor and clean up all this shit
+find how to edit xfce properties before they initialize
+
+autostart tmux with some cli programs
