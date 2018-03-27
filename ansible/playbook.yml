@@ -62,7 +62,7 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2,ttf-ancient-fonts-symbola
+      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2,ttf-ancient-fonts-symbola,xsel
       state: latest
     become: yes
     become_method: sudo
