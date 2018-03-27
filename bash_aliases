@@ -24,3 +24,5 @@ alias myprint='lp -d Deskjet_3000_J310'
 
 alias gitl='git lg|head'
 alias gs='git status'
+
+alias xsel='xsel -b'
