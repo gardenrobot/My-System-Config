@@ -2,6 +2,7 @@
 - hosts: chromebook2
   vars:
     - ssh_config: "{{ lookup('file', '~/.myconfig/ssh/config.vault') }}"
+    - owncloud_pass: "{{ lookup('file', '~/.myconfig/owncloud/password.vault') }}"
     - git_ssh: "git@github.com:samclotf/My-System-Config.git"
     - git_http: "https://github.com/samclotf/My-System-Config.git"
     - config_dest: ~/.myconfig/
@@ -61,7 +62,7 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,evolution,keepassx,gpicview,libreoffice,cmus,tint2
+      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2
       state: latest
     become: yes
     become_method: sudo
@@ -112,7 +113,6 @@
     - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
     - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
     - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx2/keepassx2.ini' }
-    - { src: '~/.myconfig/lxde_panel',      dest: '~/.config/lxpanel/LXDE/panels/panel' }
     - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
     - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
@@ -172,3 +172,39 @@
       name: tootstream
       executable: pip3
 
+  - name: make owncloud dir
+    file:
+      path: ~/ownCloud/
+      state: directory
+
+  - name: owncloud cron
+    cron:
+      name: "owncloud sync"
+      minute: "*/10"
+      job: ~/.myconfig/owncloud/sync.sh
+
+  - name: restrict owncloud password
+    file:
+      path: ~/.myconfig/owncloud/password
+      state: touch
+      owner: sam
+      mode: "u=rw,g=,o="
+
+  - name: decrypt owncloud password
+    shell: echo "{{owncloud_pass}}" > ~/.myconfig/owncloud/password
+
+  - name: start cron
+    service:
+      name: cron
+      state: started
+      enabled: yes
+
+  - name: titlebar buttons
+    command: xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
+
+  - name: power settings
+    command: "{{item}}"
+    with_items:
+    - 'xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -s 0'
+    - 'xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0'
+    - 'xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1'
