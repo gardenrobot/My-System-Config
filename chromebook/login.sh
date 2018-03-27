@@ -1,5 +1,6 @@
 #!/bin/bash
 
+setxkbmap us altgr-intl
 tilda &
 #xbindkeys &
 discord-ptb &
