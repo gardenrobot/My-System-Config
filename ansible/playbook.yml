@@ -98,6 +98,13 @@
       dest: "{{reddit_dest}}"
       accept_hostkey: yes
 
+  - name: cp reddit config
+    command: cp ~/.myconfig/reddit_config ~/.reddit-search-notifications/config
+
+  - name: install pip requirements
+    pip:
+      requirements: ~/.reddit-search-notifications/requirements.txt
+
   - name: make config dirs
     file:
       path: "{{ item }}"
@@ -132,7 +139,6 @@
     - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
     - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
     - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx2/keepassx2.ini' }
-    - { src: '~/.myconfig/reddit_config',   dest: '~/.reddit-search-notifications/config' }
     - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
     - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
     - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
