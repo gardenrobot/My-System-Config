@@ -94,14 +94,14 @@ border_color_pressed = #000000 0
 #===============================================
 
 # Panel
-panel_items = BTSC
+panel_items = TSCB
 panel_size = 100% 32
 panel_margin = 0 0
 panel_padding = 0 0 0
 panel_background_id = 1
 wm_menu = 1
 panel_dock = 0
-panel_position = top center horizontal
+panel_position = bottom center horizontal
 panel_layer = top
 panel_monitor = all
 primary_monitor_first = 0
@@ -128,7 +128,7 @@ launcher_item_app = /usr/share/applications/exo-file-manager.desktop
 launcher_item_app = /usr/share/applications/xfce4-terminal.desktop
 
 # Panel Autohide
-autohide = 1
+autohide = 0
 autohide_show_timeout = 0.1
 autohide_hide_timeout = 1.0
 autohide_height = 0
