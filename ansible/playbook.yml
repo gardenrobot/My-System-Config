@@ -38,8 +38,11 @@
 
   - name: add repos
     apt_repository:
-      repo: deb https://riot.im/packages/debian/ xenial main
+      repo: "{{item}}"
       state: present
+    with_items:
+    - deb https://riot.im/packages/debian/ xenial main
+    - ppa:kasra-mp/ubuntu-indicator-weather
     become: yes
     become_method: sudo
 
@@ -62,8 +65,16 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2,ttf-ancient-fonts-symbola,xsel
+      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2,ttf-ancient-fonts-symbola,xsel,software-properties-common,indicator-weather
       state: latest
+    become: yes
+    become_method: sudo
+
+  - name: remove packages
+    apt:
+      name: xscreensaver
+      state: absent
+      autoremove: yes
     become: yes
     become_method: sudo
 
