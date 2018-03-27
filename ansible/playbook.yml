@@ -209,3 +209,7 @@
     - DISPLAY=:1.0 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 0
     - DISPLAY=:1.0 xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
     ignore_errors: yes # This fails if the xfce4-power-manager settings menu has not been opened yet. Fix later.
+
+  - name: set wallpaper
+    shell: DISPLAY=:1.0 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/ownCloud/Wallpaper/shards-pink.jpg
+    ignore_errors: yes # This fails if the wallpaper settings menu has not been opened yet. Fix later.
