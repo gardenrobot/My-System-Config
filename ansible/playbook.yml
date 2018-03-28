@@ -1,15 +1,35 @@
 ---
 - hosts: chromebook2
   vars:
-    - ssh_config: "{{ lookup('file', '~/.myconfig/ssh/config.vault') }}"
-    - owncloud_pass: "{{ lookup('file', '~/.myconfig/owncloud/password.vault') }}"
-    - git_ssh: "git@github.com:samclotf/My-System-Config.git"
-    - git_http: "https://github.com/samclotf/My-System-Config.git"
-    - reddit_git_http: "https://github.com/samclotf/reddit-search-notifications.git"
-    - config_dest: ~/.myconfig/
-    - reddit_dest: ~/.reddit-search-notifications/
-    - vundle_repo: https://github.com/VundleVim/Vundle.vim.git
-    - vundle_dest: ~/.vim/bundle/Vundle.vim
+    myconfig:
+      dir:        ~/.myconfig
+      repo_http:  https://github.com/samclotf/My-System-Config.git
+      repo_ssh:   git@github.com:samclotf/My-System-Config.git
+
+    reddit:
+      dir:        ~/.reddit-search-notifications
+      repo_http:  https://github.com/samclotf/reddit-search-notifications.git
+      repo_ssh:   git@github.com:samclotf/reddit-search-notifications.git
+
+    vundle:
+      dir:        ~/.vim/bundle/Vundle.vim
+      repo_http:  https://github.com/VundleVim/Vundle.vim.git
+
+    ssh_keys:
+      private:  ~/.ssh/id_rsa
+      public:   ~/.ssh/id_rsa.pub
+
+    ssh_keys_personal:
+      private:  ~/.ssh/id_rsa_personal
+      public:   ~/.ssh/id_rsa_personal.pub
+
+    ssh_keys_work:
+      private:  ~/.ssh/id_rsa_work
+      public:   ~/.ssh/id_rsa_work.pub
+
+    ssh_config: "{{ lookup('file', '{{myconfig.dir}}/ssh/config.vault') }}"
+    owncloud_pass: "{{ lookup('file', '{{myconfig.dir}}/owncloud/password.vault') }}"
+
   tasks:
 
   - name: remove folders
@@ -25,9 +45,12 @@
     - Videos
 
   - name: generate ssh keys
-    command: ssh-keygen -f ~/.ssh/id_rsa_personal -N ''
+    command: ssh-keygen -f "{{item.private}}" -N ''
     args:
-      creates: ~/.ssh/id_rsa_personal
+      creates: "{{item.private}}"
+    with_items:
+      - "{{ssh_keys_personal}}"
+      - "{{ssh_keys_work}}"
 
   - name: link ssh keys
     file:
@@ -35,8 +58,8 @@
       dest: "{{ item.dest }}"
       state: link
     with_items:
-    - { src: '~/.ssh/id_rsa_personal',      dest: '~/.ssh/id_rsa' }
-    - { src: '~/.ssh/id_rsa_personal.pub',  dest: '~/.ssh/id_rsa.pub' }
+    - { src: "{{ssh_keys_personal.private}}", dest: "{{ssh_keys.private}}" }
+    - { src: "{{ssh_keys_personal.public}}",  dest: "{{ssh_keys.public}}" }
 
   - name: add repos
     apt_repository:
@@ -67,8 +90,50 @@
 
   - name: install packages
     apt:
-      name: wget,curl,vim,tmux,curl,wget,git,firefox,xbindkeys,xbindkeys-config,tilda,bash-completion,build-essential,cheese,gedit,riot-web,owncloud-client,owncloud-client-cmd,silversearcher-ag,gimp,traceroute,vlc,htop,ncdu,redshift-gtk,nano,ffmpeg,evince,speedcrunch,links,python-pip,python3-pip,alltray,keepassx,gpicview,libreoffice,cmus,tint2,ttf-ancient-fonts-symbola,xsel,software-properties-common,indicator-weather
-      state: latest
+      name: "{{item}}"
+      state: present
+    with_items:
+    - alltray
+    - bash-completion
+    - build-essential
+    - cheese
+    - cmus
+    - curl
+    - curl
+    - evince
+    - ffmpeg
+    - firefox
+    - gedit
+    - gimp
+    - git
+    - gpicview
+    - htop
+    - indicator-weather
+    - keepassx
+    - libreoffice
+    - links
+    - nano
+    - ncdu
+    - owncloud-client
+    - owncloud-client-cmd
+    - python-pip
+    - python3-pip
+    - redshift-gtk
+    - riot-web
+    - silversearcher-ag
+    - software-properties-common
+    - speedcrunch
+    - tilda
+    - tint2
+    - tmux
+    - traceroute
+    - ttf-ancient-fonts-symbola
+    - vim
+    - vlc
+    - wget
+    - xbindkeys
+    - xbindkeys-config
+    - xsel
     become: yes
     become_method: sudo
 
@@ -80,26 +145,26 @@
     become: yes
     become_method: sudo
 
-  - name: clone system config
+  - name: clone repos
     git:
-      repo: "{{git_http}}"
-      dest: "{{config_dest}}"
+      repo: "{{item.repo_http}}"
+      dest: "{{item.dir}}"
       accept_hostkey: yes
-    ignore_errors: yes # TODO remove this. This is for development on same machine running ansible.
+    with_items:
+      - "{{myconfig}}"
+      - "{{reddit}}"
+      - "{{vundle}}"
 
-  - name: use ssh repo
-    command: git remote set-url origin "{{git_ssh}}"
+  - name: use ssh repos
+    command: git remote set-url origin "{{item.repo_ssh}}"
     args:
-      chdir: "{{config_dest}}"
-
-  - name: clone reddit notifications repo
-    git:
-      repo: "{{reddit_git_http}}" # TODO use ssh repo
-      dest: "{{reddit_dest}}"
-      accept_hostkey: yes
+      chdir: "{{item.dir}}"
+    with_items:
+      - "{{myconfig}}"
+      - "{{reddit}}"
 
   - name: cp reddit config
-    command: cp ~/.myconfig/reddit_config ~/.reddit-search-notifications/config
+    command: cp "{{myconfig.dir}}/reddit_config" ~/.reddit-search-notifications/config
 
   - name: install pip requirements
     pip:
@@ -115,6 +180,7 @@
     - ~/.config/keepassx2/
     - ~/.fluxbox
 
+  # TODO only remove if they are files
   - name: remove existing user config files
     file:
       path: "{{ item }}"
@@ -127,25 +193,25 @@
 
   - name: link user config files
     file:
-      src: "{{ item.src }}"
-      dest: "{{ item.dest }}"
+      src: "{{myconfig.dir}}/{{item.src}}"
+      dest: "{{item.dest}}"
       state: link
     with_items:
-    - { src: '~/.myconfig/agignore',        dest: '~/.agignore' }
-    - { src: '~/.myconfig/bash_aliases',    dest: '~/.bash_aliases' }
-    - { src: '~/.myconfig/bashrc',          dest: '~/.bashrc' }
-    - { src: '~/.myconfig/gitconfig',       dest: '~/.gitconfig' }
-    - { src: '~/.myconfig/inputrc',         dest: '~/.inputrc' }
-    - { src: '~/.myconfig/fluxbox/init',    dest: '~/.fluxbox/init' }
-    - { src: '~/.myconfig/fluxbox/startup', dest: '~/.fluxbox/startup' }
-    - { src: '~/.myconfig/keepassx2.ini',   dest: '~/.config/keepassx2/keepassx2.ini' }
-    - { src: '~/.myconfig/ssh-ident',       dest: '~/.ssh-ident' }
-    - { src: '~/.myconfig/tilda_config',    dest: '~/.config/tilda/config_0' }
-    - { src: '~/.myconfig/tint2rc',         dest: '~/.config/tint2/tint2rc' }
-    - { src: '~/.myconfig/tmux.conf',       dest: '~/.tmux.conf' }
-    - { src: '~/.myconfig/vimrc',           dest: '~/.vimrc' }
-    - { src: '~/.myconfig/xbindkeysrc',     dest: '~/.xbindkeysrc' }
-    - { src: '~/.myconfig/xinitrc',         dest: '~/.xinitrc' }
+    - { src: "agignore",        dest: "~/.agignore" }
+    - { src: "bash_aliases",    dest: "~/.bash_aliases" }
+    - { src: "bashrc",          dest: "~/.bashrc" }
+    - { src: "gitconfig",       dest: "~/.gitconfig" }
+    - { src: "inputrc",         dest: "~/.inputrc" }
+    - { src: "fluxbox/init",    dest: "~/.fluxbox/init" }
+    - { src: "fluxbox/startup", dest: "~/.fluxbox/startup" }
+    - { src: "keepassx2.ini",   dest: "~/.config/keepassx2/keepassx2.ini" }
+    - { src: "ssh-ident",       dest: "~/.ssh-ident" }
+    - { src: "tilda_config",    dest: "~/.config/tilda/config_0" }
+    - { src: "tint2rc",         dest: "~/.config/tint2/tint2rc" }
+    - { src: "tmux.conf",       dest: "~/.tmux.conf" }
+    - { src: "vimrc",           dest: "~/.vimrc" }
+    - { src: "xbindkeysrc",     dest: "~/.xbindkeysrc" }
+    - { src: "xinitrc",         dest: "~/.xinitrc" }
 
   - name: decrypt ssh config
     shell: echo "{{ ssh_config }}" > ~/.ssh/config
@@ -178,13 +244,6 @@
     args:
       creates: /usr/bin/Desktop-Bridge
 
-    # vim plugins
-  - name: install vim plugin manager
-    git:
-      repo: "{{vundle_repo}}"
-      dest: "{{vundle_dest}}"
-      accept_hostkey: yes
-
   - name: install vim plugins
     shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
 
@@ -207,17 +266,17 @@
     cron:
       name: "owncloud sync"
       minute: "*/10"
-      job: ~/.myconfig/owncloud/sync.sh
+      job: "{{myconfig.dir}}/owncloud/sync.sh"
 
   - name: restrict owncloud password
     file:
-      path: ~/.myconfig/owncloud/password
+      path: "{{myconfig.dir}}/owncloud/password"
       state: touch
       owner: sam
       mode: "u=rw,g=,o="
 
   - name: decrypt owncloud password
-    shell: echo "{{owncloud_pass}}" > ~/.myconfig/owncloud/password
+    shell: echo "{{owncloud_pass}}" > {{myconfig.dir}}/owncloud/password
 
   - name: start cron
     service:
@@ -227,6 +286,7 @@
 
   - name: titlebar buttons
     shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
+    ignore_errors: yes
 
   - name: power settings
     command: "{{item}}"
@@ -242,7 +302,7 @@
 
   - name: update rc.local
     copy:
-      src: ~/.myconfig/chromebook/rc.local
+      src: "{{myconfig.dir}}/chromebook/rc.local"
       dest: /etc/rc.local
       owner: root
       group: root
