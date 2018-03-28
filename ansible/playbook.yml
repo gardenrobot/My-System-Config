@@ -71,8 +71,6 @@
         dest: "~/.vimrc"
       - src: "xbindkeysrc"
         dest: "~/.xbindkeysrc"
-      - src: "xinitrc"
-        dest: "~/.xinitrc"
 
     deb_installs:
       - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
