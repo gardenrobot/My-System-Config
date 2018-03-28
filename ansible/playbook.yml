@@ -1,5 +1,17 @@
+# Things to bring into ansible
+#
+#
+# Add this to session startup automatically
+# ~/.myconfig/chromebook/login.sh
+#
+# add a new email client and its config
+#
+# find how to edit xfce properties before they initialize
+#
+# autostart tmux with some common cli programs
+
 ---
-- hosts: chromebook2
+- hosts: crouton
   vars:
     myconfig:
       dir:        ~/.myconfig
