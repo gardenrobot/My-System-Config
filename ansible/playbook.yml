@@ -62,6 +62,14 @@
       - src: "xinitrc"
         dest: "~/.xinitrc"
 
+    deb_installs:
+      - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
+        dest: /tmp/ansible-bridge.deb
+        bin_path: /usr/bin/discord-ptb
+      - url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
+        dest: /tmp/ansible-bridge.deb
+        bin_path: /usr/bin/Desktop-Bridge
+
   tasks:
 
   - name: remove folders
@@ -238,31 +246,19 @@
     args:
       creates: ~/.ssh/config
 
-  # TODO combine .deb installation tasks
-  - name: download discord
+  - name: download deb files
     get_url:
-      url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
-      dest: /tmp/ansible-discord.deb
+      url:  "{{item.url}}"
+      dest: "{{item.dest}}"
+    with_items: "{{deb_installs}}"
 
-  - name: install discord
-    shell: yes | gdebi /tmp/ansible-discord.deb
+  - name: install deb files
+    shell: yes | gdebi "{{item.dest}}"
     become: yes
     become_method: sudo
     args:
-      creates: /usr/bin/discord-ptb
-
-  # This version may be out of date. When the repo is released, use that.
-  - name: download bridge
-    get_url:
-      url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
-      dest: /tmp/ansible-bridge.deb
-
-  - name: install bridge
-    shell: yes | gdebi /tmp/ansible-bridge.deb
-    become: yes
-    become_method: sudo
-    args:
-      creates: /usr/bin/Desktop-Bridge
+      creates: "{{item.bin_path}}"
+    with_items: "{{deb_installs}}"
 
   - name: install vim plugins
     shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
