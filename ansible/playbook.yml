@@ -204,11 +204,11 @@
       - "{{reddit}}"
 
   - name: cp reddit config
-    command: cp "{{myconfig.dir}}/reddit_config" ~/.reddit-search-notifications/config
+    command: cp "{{myconfig.dir}}/reddit_config" "{{reddit.dir}}/config"
 
   - name: install pip requirements
     pip:
-      requirements: ~/.reddit-search-notifications/requirements.txt
+      requirements: "{{reddit.dir}}/requirements.txt"
 
   - name: make config dirs
     file:
