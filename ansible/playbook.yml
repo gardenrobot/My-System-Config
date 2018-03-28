@@ -241,11 +241,6 @@
       state: link
     with_items: "{{linked_files}}"
 
-  - name: decrypt ssh config
-    shell: echo "{{ ssh_config }}" > ~/.ssh/config
-    args:
-      creates: ~/.ssh/config
-
   - name: download deb files
     get_url:
       url:  "{{item.url}}"
@@ -291,8 +286,11 @@
       owner: sam
       mode: "u=rw,g=,o="
 
-  - name: decrypt owncloud password
-    shell: echo "{{owncloud_pass}}" > {{myconfig.dir}}/owncloud/password
+  - name: decrypt files
+    shell: echo "{{item.data}}" > {{item.path}}
+    with_items:
+      - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
+      - { data: "{{owncloud_pass}}",  path: "{{myconfig.dir}}/owncloud/password" }
 
   - name: start cron
     service:
