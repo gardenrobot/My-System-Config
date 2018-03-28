@@ -30,6 +30,38 @@
     ssh_config: "{{ lookup('file', '{{myconfig.dir}}/ssh/config.vault') }}"
     owncloud_pass: "{{ lookup('file', '{{myconfig.dir}}/owncloud/password.vault') }}"
 
+    linked_files:
+      - src: "agignore"
+        dest: "~/.agignore"
+      - src: "bash_aliases"
+        dest: "~/.bash_aliases"
+      - src: "bashrc"
+        dest: "~/.bashrc"
+      - src: "gitconfig"
+        dest: "~/.gitconfig"
+      - src: "inputrc"
+        dest: "~/.inputrc"
+      - src: "fluxbox/init"
+        dest: "~/.fluxbox/init"
+      - src: "fluxbox/startup"
+        dest: "~/.fluxbox/startup"
+      - src: "keepassx2.ini"
+        dest: "~/.config/keepassx2/keepassx2.ini"
+      - src: "ssh-ident"
+        dest: "~/.ssh-ident"
+      - src: "tilda_config"
+        dest: "~/.config/tilda/config_0"
+      - src: "tint2rc"
+        dest: "~/.config/tint2/tint2rc"
+      - src: "tmux.conf"
+        dest: "~/.tmux.conf"
+      - src: "vimrc"
+        dest: "~/.vimrc"
+      - src: "xbindkeysrc"
+        dest: "~/.xbindkeysrc"
+      - src: "xinitrc"
+        dest: "~/.xinitrc"
+
   tasks:
 
   - name: remove folders
@@ -180,15 +212,18 @@
     - ~/.config/keepassx2/
     - ~/.fluxbox
 
-  # TODO only remove if they are files
+  - name: get list of config files to delete
+    stat:
+      path: "~/.agignore"
+    register: st
+    with_items: "{{linked_files}}"
+
   - name: remove existing user config files
     file:
-      path: "{{ item }}"
+      path: "~/.agignore"
       state: absent
-    with_items: # TODO make these variables less redundant
-    - ~/.bashrc
-    - ~/.config/lxpanel/LXDE/panels/panel
-    - ~/.config/tilda/config_0
+    when: item.stat.exists and item.stat.isreg
+    with_items: "{{st.results}}"
 
 
   - name: link user config files
@@ -196,22 +231,7 @@
       src: "{{myconfig.dir}}/{{item.src}}"
       dest: "{{item.dest}}"
       state: link
-    with_items:
-    - { src: "agignore",        dest: "~/.agignore" }
-    - { src: "bash_aliases",    dest: "~/.bash_aliases" }
-    - { src: "bashrc",          dest: "~/.bashrc" }
-    - { src: "gitconfig",       dest: "~/.gitconfig" }
-    - { src: "inputrc",         dest: "~/.inputrc" }
-    - { src: "fluxbox/init",    dest: "~/.fluxbox/init" }
-    - { src: "fluxbox/startup", dest: "~/.fluxbox/startup" }
-    - { src: "keepassx2.ini",   dest: "~/.config/keepassx2/keepassx2.ini" }
-    - { src: "ssh-ident",       dest: "~/.ssh-ident" }
-    - { src: "tilda_config",    dest: "~/.config/tilda/config_0" }
-    - { src: "tint2rc",         dest: "~/.config/tint2/tint2rc" }
-    - { src: "tmux.conf",       dest: "~/.tmux.conf" }
-    - { src: "vimrc",           dest: "~/.vimrc" }
-    - { src: "xbindkeysrc",     dest: "~/.xbindkeysrc" }
-    - { src: "xinitrc",         dest: "~/.xinitrc" }
+    with_items: "{{linked_files}}"
 
   - name: decrypt ssh config
     shell: echo "{{ ssh_config }}" > ~/.ssh/config
