@@ -212,13 +212,14 @@
 
   - name: make config dirs
     file:
-      path: "{{ item }}"
+      path: "{{item}}"
       state: directory
     with_items:
     - ~/.config/tilda/
     - ~/.config/tint2/
     - ~/.config/keepassx2/
     - ~/.fluxbox
+    - ~/ownCloud/
 
   - name: get list of config files to delete
     stat:
@@ -268,11 +269,6 @@
       name: tootstream
       executable: pip3
 
-  - name: make owncloud dir
-    file:
-      path: ~/ownCloud/
-      state: directory
-
   - name: owncloud cron
     cron:
       name: "owncloud sync"
@@ -297,6 +293,9 @@
       name: cron
       state: started
       enabled: yes
+
+  - name: run owncloud sync
+    command: "{{myconfig.dir}}/owncloud/sync.sh"
 
   - name: titlebar buttons
     shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
