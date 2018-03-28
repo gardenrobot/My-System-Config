@@ -233,15 +233,15 @@
 
   - name: get list of config files to delete
     stat:
-      path: "~/.agignore"
+      path: "{{item.dest}}"
     register: st
     with_items: "{{linked_files}}"
 
   - name: remove existing user config files
     file:
-      path: "~/.agignore"
+      path: "{{item.stat.path}}"
       state: absent
-    when: item.stat.exists and item.stat.isreg
+    when: item.stat.exists and item.stat.isreg == True
     with_items: "{{st.results}}"
 
 
