@@ -42,6 +42,9 @@
 "keepassx"
    Control+Alt + a
 
+"thunar ~"
+   Control+Alt + s
+
 "brightness down ; ~/.myconfig/brightness-show.sh"
    F6
 
