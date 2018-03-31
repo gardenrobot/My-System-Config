@@ -84,11 +84,11 @@ border_color_pressed = #000000 80
 rounded = 0
 border_width = 0
 border_sides = B
-background_color = #000000 80
+background_color = #7E57C2 80
 border_color = #000000 0
-background_color_hover = #000000 80
+background_color_hover = #7E57C2 80
 border_color_hover = #000000 0
-background_color_pressed = #000000 80
+background_color_pressed = #7E57C2 80
 border_color_pressed = #000000 0
 
 #===============================================
