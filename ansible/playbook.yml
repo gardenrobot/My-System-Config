@@ -283,7 +283,7 @@
   - name: owncloud cron
     cron:
       name: "owncloud sync"
-      minute: "*/10"
+      minute: "*/5"
       job: "{{myconfig.dir}}/owncloud/sync.sh"
 
   - name: restrict owncloud password
