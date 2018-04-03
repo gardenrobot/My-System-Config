@@ -67,6 +67,8 @@
         dest: "~/.config/tint2/tint2rc"
       - src: "tmux.conf"
         dest: "~/.tmux.conf"
+      - src: "user-dirs.dirs"
+        dest: "~/.config/user-dirs.dirs"
       - src: "vimrc"
         dest: "~/.vimrc"
       - src: "xbindkeysrc"
