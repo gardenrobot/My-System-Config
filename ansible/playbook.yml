@@ -187,6 +187,7 @@
     - xbindkeys
     - xbindkeys-config
     - xsel
+    - xul-ext-lightning
     become: yes
     become_method: sudo
 
