@@ -196,7 +196,7 @@
     apt:
       name: xscreensaver
       state: absent
-      autoremove: yes
+      #autoremove: yes # not supported in versions <2.1
     become: yes
     become_method: sudo
 
