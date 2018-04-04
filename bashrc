@@ -21,7 +21,7 @@ else
 	heart=''
 fi
 
-PS1="\[\033[38;5;128m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+PS1="\[\033[38;5;128m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 PS2='> '
 PS3='> '
 PS4='+ '
