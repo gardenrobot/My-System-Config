@@ -8,3 +8,4 @@ discord-ptb &
 python ~/.reddit-search-notifications/reddit-search-notifications.py &
 thunderbird &
 tint2 -c ~/.myconfig/tint2rc &
+syncthing &
