@@ -81,6 +81,12 @@
       - src: "xbindkeysrc"
         dest: "~/.xbindkeysrc"
 
+    deb_repo_keys:
+      - url: https://riot.im/packages/debian/repo-key.asc
+        dest: /tmp/riot-key.asc
+      - url: https://syncthing.net/release-key.txt
+        dest: /tmp/syncthing-key.asc
+
     deb_installs:
       - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
         dest: /tmp/ansible-bridge.deb
@@ -126,19 +132,22 @@
       state: present
     with_items:
     - deb https://riot.im/packages/debian/ xenial main
+    - deb https://apt.syncthing.net/ syncthing stable
     - ppa:kasra-mp/ubuntu-indicator-weather
     become: yes
     become_method: sudo
 
   - name: download repo keys
     get_url:
-      url: https://riot.im/packages/debian/repo-key.asc
-      dest: /tmp/riot-key.asc
+      url: "{{item.url}}"
+      dest: "{{item.dest}}"
+    with_items: deb_repo_keys
 
   - name: add repo keys
-    command: apt-key add /tmp/riot-key.asc
+    command: apt-key add "{{item.dest}}"
     become: yes
     become_method: sudo
+    with_items: deb_repo_keys
 
   - name: upgrade packages
     apt:
@@ -183,6 +192,7 @@
     - silversearcher-ag
     - software-properties-common
     - speedcrunch
+    - syncthing
     - thunderbird
     - tilda
     - tint2
