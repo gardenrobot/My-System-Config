@@ -242,6 +242,11 @@
     pip:
       requirements: "{{reddit.dir}}/requirements.txt"
 
+  - name: update config
+    command: python reddit-search-notifications.py -r
+    args:
+      chdir: "{{reddit.dir}}"
+
   - name: make config dirs
     file:
       path: "{{item}}"
