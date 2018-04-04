@@ -5,8 +5,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;37m\] \w \[\e[0m\]\[\e[00;36m\]\\$\[\e[0m\]\[\e[00;37m\] \[\e[0m\]'
-PS1="\[\033[38;5;128m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]\[\033[38;5;1m\]❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+machine="a"
+[ -r ~/.myconfig/bashrc_machine ] && . ~/.myconfig/bashrc_machine
+
+if [ $machine == "kuruk" ];
+then
+	heart='\[\033[38;5;1m\]'
+elif [ $machine == "chromebook1" ];
+then
+	heart='\[\033[38;5;2m\]'
+elif [ $machine == "chromebook2" ];
+then
+	heart='\[\033[38;5;4m\]'
+else
+	heart=''
+fi
+
+PS1="\[\033[38;5;128m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 PS2='> '
 PS3='> '
 PS4='+ '
