@@ -1,0 +1,176 @@
+all:
+  children:
+    desktop:
+      hosts:
+        kuruk:
+          ansible_port: 22
+          ansible_host: 192.168.3.2
+      vars:
+        installed_packages:
+          - alltray
+          - bash-completion
+          - build-essential
+          - cmus
+          - curl
+          - ffmpeg
+          - firefox
+          - fonts-noto
+          - gimp
+          - git
+          - htop
+          - keepassx
+          - libreoffice
+          - links
+          - nano
+          - ncdu
+          - owncloud-client
+          - owncloud-client-cmd
+          - python-pip
+          - python3-pip
+          - python3-setuptools
+          - redshift-gtk
+          - riot-web
+          - silversearcher-ag
+          - software-properties-common
+          - speedcrunch
+          - syncthing
+          - thunderbird
+          - tilda
+          - tint2
+          - tmux
+          - traceroute
+          - ttf-ancient-fonts-symbola
+          - vim
+          - vlc
+          - wget
+          - xbindkeys
+          - xbindkeys-config
+          - xsel
+          - xul-ext-lightning
+    crouton:
+      hosts:
+        chromebook1:
+          ansible_port: 22
+          ansible_host: 192.168.3.10
+        chromebook2:
+          ansible_port: 22
+          ansible_host: 192.168.3.4
+      vars:
+        installed_packages:
+          - bash-completion
+          - build-essential
+          - cheese
+          - cmus
+          - curl
+          - evince
+          - ffmpeg
+          - firefox
+          - fonts-noto
+          - gedit
+          - gimp
+          - git
+          - gpicview
+          - htop
+          - indicator-weather
+          - keepassx
+          - libreoffice
+          - links
+          - nano
+          - ncdu
+          - owncloud-client
+          - owncloud-client-cmd
+          - python-pip
+          - python3-pip
+          - redshift-gtk
+          - riot-web
+          - silversearcher-ag
+          - software-properties-common
+          - speedcrunch
+          - syncthing
+          - thunderbird
+          - tilda
+          - tint2
+          - tmux
+          - traceroute
+          - ttf-ancient-fonts-symbola
+          - vim
+          - vlc
+          - wget
+          - xbindkeys
+          - xbindkeys-config
+          - xsel
+          - xul-ext-lightning
+  vars:
+    myconfig:
+      dir:        ~/.myconfig
+      repo_http:  https://github.com/samclotf/My-System-Config.git
+      repo_ssh:   git@github.com:samclotf/My-System-Config.git
+
+    reddit:
+      dir:        ~/.reddit-search-notifications
+      repo_http:  https://github.com/samclotf/reddit-search-notifications.git
+      repo_ssh:   git@github.com:samclotf/reddit-search-notifications.git
+
+    vundle:
+      dir:        ~/.vim/bundle/Vundle.vim
+      repo_http:  https://github.com/VundleVim/Vundle.vim.git
+
+    ssh_keys:
+      private:  ~/.ssh/id_rsa
+      public:   ~/.ssh/id_rsa.pub
+
+    ssh_keys_personal:
+      private:  ~/.ssh/id_rsa_personal
+      public:   ~/.ssh/id_rsa_personal.pub
+
+    ssh_keys_work:
+      private:  ~/.ssh/id_rsa_work
+      public:   ~/.ssh/id_rsa_work.pub
+
+    ssh_config: "{{ lookup('file', '{{myconfig.dir}}/ssh/config.vault') }}"
+
+    linked_files:
+      - src: "agignore"
+        dest: "~/.agignore"
+      - src: "bash_aliases"
+        dest: "~/.bash_aliases"
+      - src: "bashrc"
+        dest: "~/.bashrc"
+      - src: "gitconfig"
+        dest: "~/.gitconfig"
+      - src: "inputrc"
+        dest: "~/.inputrc"
+      - src: "fluxbox/init"
+        dest: "~/.fluxbox/init"
+      - src: "fluxbox/startup"
+        dest: "~/.fluxbox/startup"
+      - src: "keepassx2.ini"
+        dest: "~/.config/keepassx2/keepassx2.ini"
+      - src: "ssh-ident"
+        dest: "~/.ssh-ident"
+      - src: "tilda_config"
+        dest: "~/.config/tilda/config_0"
+      - src: "tint2rc"
+        dest: "~/.config/tint2/tint2rc"
+      - src: "tmux.conf"
+        dest: "~/.tmux.conf"
+      - src: "user-dirs.dirs"
+        dest: "~/.config/user-dirs.dirs"
+      - src: "vimrc"
+        dest: "~/.vimrc"
+      - src: "xbindkeysrc"
+        dest: "~/.xbindkeysrc"
+
+    deb_repo_keys:
+      - url: https://riot.im/packages/debian/repo-key.asc
+        dest: /tmp/riot-key.asc
+      - url: https://syncthing.net/release-key.txt
+        dest: /tmp/syncthing-key.asc
+
+    deb_installs:
+      - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
+        dest: /tmp/ansible-bridge.deb
+        bin_path: /usr/bin/discord-ptb
+      - url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
+        dest: /tmp/ansible-bridge.deb
+        bin_path: /usr/bin/Desktop-Bridge

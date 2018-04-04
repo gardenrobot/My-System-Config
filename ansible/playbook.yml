@@ -18,83 +18,7 @@
 # - Icons: Ubuntu-Mono-Dark
 
 ---
-- hosts: crouton
-  vars:
-    myconfig:
-      dir:        ~/.myconfig
-      repo_http:  https://github.com/samclotf/My-System-Config.git
-      repo_ssh:   git@github.com:samclotf/My-System-Config.git
-
-    reddit:
-      dir:        ~/.reddit-search-notifications
-      repo_http:  https://github.com/samclotf/reddit-search-notifications.git
-      repo_ssh:   git@github.com:samclotf/reddit-search-notifications.git
-
-    vundle:
-      dir:        ~/.vim/bundle/Vundle.vim
-      repo_http:  https://github.com/VundleVim/Vundle.vim.git
-
-    ssh_keys:
-      private:  ~/.ssh/id_rsa
-      public:   ~/.ssh/id_rsa.pub
-
-    ssh_keys_personal:
-      private:  ~/.ssh/id_rsa_personal
-      public:   ~/.ssh/id_rsa_personal.pub
-
-    ssh_keys_work:
-      private:  ~/.ssh/id_rsa_work
-      public:   ~/.ssh/id_rsa_work.pub
-
-    ssh_config: "{{ lookup('file', '{{myconfig.dir}}/ssh/config.vault') }}"
-    owncloud_pass: "{{ lookup('file', '{{myconfig.dir}}/owncloud/password.vault') }}"
-
-    linked_files:
-      - src: "agignore"
-        dest: "~/.agignore"
-      - src: "bash_aliases"
-        dest: "~/.bash_aliases"
-      - src: "bashrc"
-        dest: "~/.bashrc"
-      - src: "gitconfig"
-        dest: "~/.gitconfig"
-      - src: "inputrc"
-        dest: "~/.inputrc"
-      - src: "fluxbox/init"
-        dest: "~/.fluxbox/init"
-      - src: "fluxbox/startup"
-        dest: "~/.fluxbox/startup"
-      - src: "keepassx2.ini"
-        dest: "~/.config/keepassx2/keepassx2.ini"
-      - src: "ssh-ident"
-        dest: "~/.ssh-ident"
-      - src: "tilda_config"
-        dest: "~/.config/tilda/config_0"
-      - src: "tint2rc"
-        dest: "~/.config/tint2/tint2rc"
-      - src: "tmux.conf"
-        dest: "~/.tmux.conf"
-      - src: "user-dirs.dirs"
-        dest: "~/.config/user-dirs.dirs"
-      - src: "vimrc"
-        dest: "~/.vimrc"
-      - src: "xbindkeysrc"
-        dest: "~/.xbindkeysrc"
-
-    deb_repo_keys:
-      - url: https://riot.im/packages/debian/repo-key.asc
-        dest: /tmp/riot-key.asc
-      - url: https://syncthing.net/release-key.txt
-        dest: /tmp/syncthing-key.asc
-
-    deb_installs:
-      - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
-        dest: /tmp/ansible-bridge.deb
-        bin_path: /usr/bin/discord-ptb
-      - url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
-        dest: /tmp/ansible-bridge.deb
-        bin_path: /usr/bin/Desktop-Bridge
-
+- hosts: all
   tasks:
 
   - name: remove folders
@@ -130,10 +54,11 @@
     apt_repository:
       repo: "{{item}}"
       state: present
+      #codename: yes # supported in verison 2.3
     with_items:
     - deb https://riot.im/packages/debian/ xenial main
     - deb https://apt.syncthing.net/ syncthing stable
-    - ppa:kasra-mp/ubuntu-indicator-weather
+    #- ppa:kasra-mp/ubuntu-indicator-weather # TODO ppas do not work on non-ubuntu with ansible version <2.3
     become: yes
     become_method: sudo
 
@@ -160,59 +85,17 @@
     apt:
       name: "{{item}}"
       state: present
-    with_items:
-    - alltray
-    - bash-completion
-    - build-essential
-    - cheese
-    - cmus
-    - curl
-    - evince
-    - ffmpeg
-    - firefox
-    - fonts-noto
-    - gedit
-    - gimp
-    - git
-    - gpicview
-    - htop
-    - indicator-weather
-    - keepassx
-    - libreoffice
-    - links
-    - nano
-    - ncdu
-    - owncloud-client
-    - owncloud-client-cmd
-    - python-pip
-    - python3-pip
-    - redshift-gtk
-    - riot-web
-    - silversearcher-ag
-    - software-properties-common
-    - speedcrunch
-    - syncthing
-    - thunderbird
-    - tilda
-    - tint2
-    - tmux
-    - traceroute
-    - ttf-ancient-fonts-symbola
-    - vim
-    - vlc
-    - wget
-    - xbindkeys
-    - xbindkeys-config
-    - xsel
-    - xul-ext-lightning
+    with_items: "{{installed_packages}}"
     become: yes
     become_method: sudo
+    tags:
+      - a
 
   - name: remove packages
     apt:
       name: xscreensaver
       state: absent
-      #autoremove: yes # not supported in versions <2.1
+      autoremove: yes
     become: yes
     become_method: sudo
 
@@ -234,18 +117,6 @@
       - "{{myconfig}}"
       - "{{reddit}}"
 
-  - name: cp reddit config
-    command: cp "{{myconfig.dir}}/reddit_config" "{{reddit.dir}}/config"
-
-  - name: install pip requirements
-    pip:
-      requirements: "{{reddit.dir}}/requirements.txt"
-
-  - name: update config
-    command: python reddit-search-notifications.py -r
-    args:
-      chdir: "{{reddit.dir}}"
-
   - name: make config dirs
     file:
       path: "{{item}}"
@@ -255,7 +126,6 @@
     - ~/.config/tint2/
     - ~/.config/keepassx2/
     - ~/.fluxbox
-    - ~/ownCloud/
 
   - name: get list of config files to delete
     stat:
@@ -305,33 +175,26 @@
       name: tootstream
       executable: pip3
 
-  - name: owncloud cron
-    cron:
-      name: "owncloud sync"
-      minute: "*/5"
-      job: "{{myconfig.dir}}/owncloud/sync.sh"
-
-  - name: restrict owncloud password
-    file:
-      path: "{{myconfig.dir}}/owncloud/password"
-      state: touch
-      owner: sam
-      mode: "u=rw,g=,o="
-
   - name: decrypt files
     shell: echo "{{item.data}}" > {{item.path}}
     with_items:
       - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
-      - { data: "{{owncloud_pass}}",  path: "{{myconfig.dir}}/owncloud/password" }
 
-  - name: start cron
-    service:
-      name: cron
-      state: started
-      enabled: yes
 
-  - name: run owncloud sync
-    command: "{{myconfig.dir}}/owncloud/sync.sh"
+- hosts: crouton
+  tasks:
+
+  - name: cp reddit config
+    command: cp "{{myconfig.dir}}/reddit_config" "{{reddit.dir}}/config"
+
+  - name: install pip requirements
+    pip:
+      requirements: "{{reddit.dir}}/requirements.txt"
+
+  - name: update config
+    command: python reddit-search-notifications.py -r
+    args:
+      chdir: "{{reddit.dir}}"
 
   - name: titlebar buttons
     shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
