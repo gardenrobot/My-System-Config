@@ -23,8 +23,6 @@ all:
           - links
           - nano
           - ncdu
-          - owncloud-client
-          - owncloud-client-cmd
           - python-pip
           - python3-pip
           - python3-setuptools
@@ -77,8 +75,6 @@ all:
           - links
           - nano
           - ncdu
-          - owncloud-client
-          - owncloud-client-cmd
           - python-pip
           - python3-pip
           - redshift-gtk
