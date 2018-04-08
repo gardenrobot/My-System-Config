@@ -126,6 +126,9 @@
     - ~/.config/tint2/
     - ~/.config/keepassx2/
     - ~/.fluxbox
+    - ~/.rtorrent_session/
+    tags:
+      - a
 
   - name: get list of config files to delete
     stat:
@@ -147,6 +150,8 @@
       dest: "{{item.dest}}"
       state: link
     with_items: "{{linked_files}}"
+    tags:
+      - a
 
   - name: download deb files
     get_url:

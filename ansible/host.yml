@@ -79,6 +79,7 @@ all:
           - python3-pip
           - redshift-gtk
           - riot-web
+          - rtorrent
           - silversearcher-ag
           - software-properties-common
           - speedcrunch
@@ -150,6 +151,8 @@ all:
         dest: "~/.config/tint2/tint2rc"
       - src: "tmux.conf"
         dest: "~/.tmux.conf"
+      - src: "chromebook/rtorrent.rc"
+        dest: "~/.rtorrent.rc"
       - src: "user-dirs.dirs"
         dest: "~/.config/user-dirs.dirs"
       - src: "vimrc"
