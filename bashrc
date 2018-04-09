@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 machine="a"
-[ -r ~/.myconfig/bashrc_machine ] && . ~/.myconfig/bashrc_machine
+[ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
 
 if [ $machine == "kuruk" ];
 then
