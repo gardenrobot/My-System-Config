@@ -124,7 +124,7 @@
     with_items:
     - ~/.config/tilda/
     - ~/.config/tint2/
-    - ~/.config/keepassx2/
+    - ~/.config/keepassx/
     - ~/.fluxbox
     - ~/.rtorrent_session/
     tags:

@@ -142,7 +142,7 @@ all:
       - src: "fluxbox/startup"
         dest: "~/.fluxbox/startup"
       - src: "keepassx2.ini"
-        dest: "~/.config/keepassx2/keepassx2.ini"
+        dest: "~/.config/keepassx/keepassx2.ini"
       - src: "ssh-ident"
         dest: "~/.ssh-ident"
       - src: "tilda_config"
