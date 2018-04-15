@@ -45,19 +45,19 @@
 "thunar ~"
    Control+Alt + s
 
-"brightness down ; ~/.myconfig/brightness-show.sh"
+"brightness down ; ~/.myconfig/chromebook/brightness-show.sh"
    F6
 
-"brightness up ; ~/.myconfig/brightness-show.sh"
+"brightness up ; ~/.myconfig/chromebook/brightness-show.sh"
    F7
 
-"volume mute ; ~/.myconfig/volume-show.sh"
+"volume mute ; ~/.myconfig/chromebook/volume-show.sh"
    F8
 
-"volume down ; ~/.myconfig/volume-show.sh"
+"volume down ; ~/.myconfig/chromebook/volume-show.sh"
    F9
 
-"volume up ; ~/.myconfig/volume-show.sh"
+"volume up ; ~/.myconfig/chromebook/volume-show.sh"
    F10
 
 "cmus-remote --prev"
