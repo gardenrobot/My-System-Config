@@ -15,3 +15,5 @@
 #	autocrlf = true
 [color "diff"]
 	meta = blue bold
+[push]
+	default = simple
