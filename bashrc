@@ -17,6 +17,9 @@ then
 elif [ $machine == "chromebook2" ];
 then
 	heart_color='\[\033[38;5;4m\]' # blue
+elif [ $machine == "pi" ];
+then
+	heart_color='\[\033[38;5;11m\]' # yellow
 else
 	heart_color='' # default to white
 fi
