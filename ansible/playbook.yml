@@ -62,17 +62,17 @@
     become: yes
     become_method: sudo
 
-  - name: download repo keys
-    get_url:
-      url: "{{item.url}}"
-      dest: "{{item.dest}}"
-    with_items: deb_repo_keys
-
-  - name: add repo keys
-    command: apt-key add "{{item.dest}}"
-    become: yes
-    become_method: sudo
-    with_items: deb_repo_keys
+#  - name: download repo keys
+#    get_url:
+#      url: "{{item.url}}"
+#      dest: "{{item.dest}}"
+#    with_items: "{{deb_repo_keys}}"
+#
+#  - name: add repo keys
+#    command: apt-key add "{{item.dest}}"
+#    become: yes
+#    become_method: sudo
+#    with_items: "{{deb_repo_keys}}"
 
   - name: upgrade packages
     apt:
