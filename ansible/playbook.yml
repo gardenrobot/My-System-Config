@@ -127,8 +127,7 @@
     - ~/.config/keepassx/
     - ~/.fluxbox
     - ~/.rtorrent_session/
-    tags:
-      - a
+    - ~/.mutt/
 
   - name: get list of config files to delete
     stat:

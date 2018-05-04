@@ -47,6 +47,15 @@ all:
           - xbindkeys-config
           - xsel
           - xul-ext-lightning
+
+            # neomutt deps
+          - libidn11-dev
+          - libncursesw5-dev
+          - libnotmuch-dev
+          - libsasl2-dev
+          - libxml2-utils
+          - urlscan
+          - xsltproc
     crouton:
       hosts:
         chromebook1:
@@ -101,6 +110,15 @@ all:
           - xbindkeys-config
           - xsel
           - xul-ext-lightning
+
+            # neomutt deps
+          - libidn11-dev
+          - libncursesw5-dev
+          - libnotmuch-dev
+          - libsasl2-dev
+          - libxml2-utils
+          - urlscan
+          - xsltproc
   vars:
     myconfig:
       dir:        ~/.myconfig
@@ -147,6 +165,16 @@ all:
         dest: "~/.fluxbox/startup"
       - src: "keepassx2.ini"
         dest: "~/.config/keepassx/keepassx2.ini"
+      - src: "mutt/sidebar"
+        dest: "~/.mutt/sidebar"
+      - src: "mutt/mailcap"
+        dest: "~/.mutt/mailcap"
+      - src: "muttrc"
+        dest: "~/.muttrc"
+      - src: "notmuch-config"
+        dest: "~/.notmuch-config"
+      - src: "offlineimaprc"
+        dest: "~/.offlineimaprc"
       - src: "ssh-ident"
         dest: "~/.ssh-ident"
       - src: "tilda_config"

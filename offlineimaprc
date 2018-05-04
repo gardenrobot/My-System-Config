@@ -1,0 +1,37 @@
+[general]
+accounts = main
+
+[Account main]
+localrepository = main-local
+remoterepository = main-remote
+
+autorefresh = 0.2
+
+quick = 10
+
+postsynchook = notmuch new
+
+
+[Repository main-local]
+type = Maildir
+localfolders = ~/.mail
+
+sync_deletes = yes
+
+
+[Repository main-remote]
+type = IMAP
+remoteport = 1143
+remotehost = 127.0.0.1
+remoteuser = samclot@protonmail.com
+remotepasseval = open('.pm_auth').readlines()[0].split(' ')[3].strip()
+keepalive = 60
+holdconnectionopen = yes
+
+expunge = yes
+
+#folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent', 'Spam', 'Folders']
+folderfilter = lambda foldername: foldername not in ['Trash']
+
+
+ssl = no

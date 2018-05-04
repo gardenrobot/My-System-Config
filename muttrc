@@ -1,0 +1,36 @@
+set mbox_type=Maildir
+set folder=~/.mail
+set record=+Sent
+set postponed=+Drafts
+set trash=+Trash
+set mail_check=2
+
+set virtual_spoolfile # use first defined virtual-mailbox as spool
+virtual-mailboxes "INBOX" "notmuch://?query=folder:INBOX"
+virtual-mailboxes "All Mail" 'notmuch://?query=folder:"All Mail"'
+virtual-mailboxes "Drafts" "notmuch://?query=folder:Drafts"
+virtual-mailboxes "Sent" "notmuch://?query=folder:Sent"
+virtual-mailboxes "Trash" "notmuch://?query=folder:Trash"
+virtual-mailboxes "Spam" "notmuch://?query=folder:Spam"
+virtual-mailboxes "Archive" "notmuch://?query=folder:Archive"
+
+source ~/.mutt/sidebar
+
+# archive
+macro index,pager a ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+
+# html viewing
+set mailcap_path = ~/.mutt/mailcap
+macro pager \cb 'urlscan' 'Follow links with urlview'
+
+# smtp
+source ~/.pm_auth
+set smtp_url=smtp://samclot@protonmail.com@127.0.0.1:1025
+set smtp_pass=$my_pass
+
+# composing
+set realname="Sam Clotfelter"
+set from="samclot@protonmail.com"
+
+# notifications
+set new_mail_command="notify-send -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
