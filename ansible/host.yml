@@ -167,7 +167,7 @@ all:
         dest: "~/.fluxbox/startup"
       - src: "keepassx2.ini"
         dest: "~/.config/keepassx/keepassx2.ini"
-      - src: ".khal_config"
+      - src: "khal_config"
         dest: ".config/khal/config"
       - src: "mutt/sidebar"
         dest: "~/.mutt/sidebar"
@@ -196,7 +196,7 @@ all:
       - src: "xbindkeysrc"
         dest: "~/.xbindkeysrc"
       - src: "vdirsyncer_config"
-        dest: "~/.config/vdirsyncer/"
+        dest: "~/.config/vdirsyncer/config"
 
     deb_repo_keys:
       - url: https://riot.im/packages/debian/repo-key.asc
