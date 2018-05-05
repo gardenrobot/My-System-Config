@@ -11,6 +11,14 @@ quick = 10
 
 postsynchook = notmuch new
 
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes-tmp
+header = "\n"
+peritem = virtual-mailboxes "%(foldername)s" 'notmuch://?query=folder:"%(foldername)s"'
+sep = "\n"
+footer = "\n"
+
 
 [Repository main-local]
 type = Maildir

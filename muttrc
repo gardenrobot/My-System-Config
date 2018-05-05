@@ -12,7 +12,7 @@ virtual-mailboxes "Drafts" "notmuch://?query=folder:Drafts"
 virtual-mailboxes "Sent" "notmuch://?query=folder:Sent"
 virtual-mailboxes "Trash" "notmuch://?query=folder:Trash"
 virtual-mailboxes "Spam" "notmuch://?query=folder:Spam"
-virtual-mailboxes "Archive" "notmuch://?query=folder:Archive"
+source ~/.mutt/mailboxes
 
 source ~/.mutt/sidebar
 

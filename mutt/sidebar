@@ -2,7 +2,7 @@
 # http://www.lunar-linux.org/index.php?option=com_content&task=view&id=44
 
 # set up the sidebar, default not visible
-set sidebar_width=12
+set sidebar_width=24
 set sidebar_visible=yes
 #set sidebar_delim='|'
 
