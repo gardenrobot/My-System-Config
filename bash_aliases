@@ -27,4 +27,4 @@ alias gs='git status'
 
 alias xsel='xsel -b'
 
-alias thanks="echo you\'re welcome! :\)"
+alias thanks="echo you\'re welcome! \<3"
