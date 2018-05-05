@@ -54,6 +54,7 @@ all:
           - libnotmuch-dev
           - libsasl2-dev
           - libxml2-utils
+          - offlineimap
           - urlscan
           - xsltproc
     crouton:
@@ -117,6 +118,7 @@ all:
           - libnotmuch-dev
           - libsasl2-dev
           - libxml2-utils
+          - offlineimap
           - urlscan
           - xsltproc
   vars:
