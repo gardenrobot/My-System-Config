@@ -19,9 +19,14 @@ source ~/.mutt/sidebar
 # archive
 macro index,pager a ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 
+# misc bindings
+bind index n toggle-new
+bind pager j next-line
+bind pager k previous-line
+
 # html viewing
 set mailcap_path = ~/.mutt/mailcap
-macro pager \cb 'urlscan' 'Follow links with urlview'
+macro pager \cb 'urlscan' 'Follow links with urlscan'
 
 # smtp
 source ~/.pm_auth
