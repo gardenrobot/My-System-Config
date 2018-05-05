@@ -26,3 +26,5 @@ alias gitl='git lg|head'
 alias gs='git status'
 
 alias xsel='xsel -b'
+
+alias thanks="echo you\'re welcome! :\)"
