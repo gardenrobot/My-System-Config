@@ -23,10 +23,12 @@ macro index,pager a ":set confirmappend=no delete=yes\n<tag-prefix><save-message
 bind index n toggle-new
 bind pager j next-line
 bind pager k previous-line
+bind pager \cb next-page
+bind pager \cu previous-page
 
 # html viewing
 set mailcap_path = ~/.mutt/mailcap
-macro pager \cb 'urlscan' 'Follow links with urlscan'
+macro pager u 'urlview' 'Follow links with urlscan'
 
 # smtp
 source ~/.pm_auth
