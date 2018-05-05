@@ -5,6 +5,4 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
 tmux new-session -d -n Masto tootstream
-tmux new-window -d -n Mutt neomutt
-tmux new-window -d -n OfflineIMAP offlineimap
-tmux new-window -d bash
+tmux new-window -d -n Mail neomutt
