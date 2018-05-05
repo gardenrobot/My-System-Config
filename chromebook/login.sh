@@ -10,4 +10,5 @@ tint2 -c ~/.myconfig/tint2rc &
 syncthing -no-browser &
 sshfs kuruk:/home/sam/Shared/ /home/sam/Shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
 offlineimap &
-~/.myconfig/tmux-start
+~/.myconfig/tmux-start &
+vdirsyncer discover calendar_personal && vdirsyncer discover contacts_personal && vdirsyncer sync

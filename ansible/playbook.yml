@@ -122,12 +122,15 @@
       path: "{{item}}"
       state: directory
     with_items:
+    - ~/.calendars
+    - ~/.config/keepassx/
     - ~/.config/tilda/
     - ~/.config/tint2/
-    - ~/.config/keepassx/
+    - ~/.config/vdirsyncer/
+    - ~/.contacts
     - ~/.fluxbox
-    - ~/.rtorrent_session/
     - ~/.mutt/
+    - ~/.rtorrent_session/
 
   - name: get list of config files to delete
     stat:
@@ -174,16 +177,27 @@
       url: https://nc3.jaba.hosting/s/Fow9dWpKt6Wnw5P/download
       dest: ~/.old.kdbx
 
-  - name: install tootstream
+  - name: install pip packages
     pip:
-      name: tootstream
+      name: "{{item}}"
       executable: pip3
+    with_items:
+      - khal
+      - tootstream
+      - vdirsyncer
 
   - name: decrypt files
     shell: echo "{{item.data}}" > {{item.path}}
     with_items:
       - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
 
+  - name: generate locales
+    command: "{{item}}"
+    become: yes
+    become_method: sudo
+    with_items:
+      - "locale-gen"
+      - "update-locale"
 
 - hosts: crouton
   tasks:

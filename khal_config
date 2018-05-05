@@ -1,0 +1,8 @@
+[calendars]
+
+[[personal]]
+path = ~/.calendars/personal
+
+[locale]
+local_timezone = America/New_York
+
