@@ -39,6 +39,9 @@ set smtp_pass=$my_pass
 # composing
 set realname="Sam Clotfelter"
 set from="samclot@protonmail.com"
+set fast_reply
+set include
+set sig_on_top=yes
 
 # notifications
 set new_mail_command="notify-send -u critical -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
