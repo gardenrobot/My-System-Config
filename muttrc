@@ -41,4 +41,4 @@ set realname="Sam Clotfelter"
 set from="samclot@protonmail.com"
 
 # notifications
-set new_mail_command="notify-send -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
+set new_mail_command="notify-send -u critical -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
