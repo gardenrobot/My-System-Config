@@ -18,6 +18,7 @@ source ~/.mutt/sidebar
 
 # archive
 macro index,pager a ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+Archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index,pager i ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+INBOX\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 
 # misc bindings
 bind index n toggle-new
