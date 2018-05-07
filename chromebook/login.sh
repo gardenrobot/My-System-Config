@@ -11,4 +11,4 @@ syncthing -no-browser &
 sshfs kuruk:/home/sam/Shared/ /home/sam/Shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
 offlineimap &
 ~/.myconfig/tmux-start &
-vdirsyncer discover calendar_personal && vdirsyncer discover contacts_personal && vdirsyncer sync
+~/.myconfig/calendar-sync &
