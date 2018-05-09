@@ -123,6 +123,7 @@
       state: directory
     with_items:
     - ~/.calendars
+    - ~/.config/khal/
     - ~/.config/keepassx/
     - ~/.config/tilda/
     - ~/.config/tint2/
