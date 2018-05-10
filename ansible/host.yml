@@ -136,6 +136,10 @@ all:
       dir:        ~/.vim/bundle/Vundle.vim
       repo_http:  https://github.com/VundleVim/Vundle.vim.git
 
+    neomutt:
+      dir: /tmp/neomutt
+      repo_http: https://github.com/neomutt/neomutt
+
     ssh_keys:
       private:  ~/.ssh/id_rsa
       public:   ~/.ssh/id_rsa.pub

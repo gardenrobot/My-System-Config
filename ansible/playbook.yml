@@ -88,8 +88,6 @@
     with_items: "{{installed_packages}}"
     become: yes
     become_method: sudo
-    tags:
-      - a
 
   - name: remove packages
     apt:
@@ -108,6 +106,7 @@
       - "{{myconfig}}"
       - "{{reddit}}"
       - "{{vundle}}"
+      - "{{neomutt}}"
 
   - name: use ssh repos
     command: git remote set-url origin "{{item.repo_ssh}}"
@@ -153,8 +152,6 @@
       dest: "{{item.dest}}"
       state: link
     with_items: "{{linked_files}}"
-    tags:
-      - a
 
   - name: download deb files
     get_url:
@@ -199,6 +196,24 @@
     with_items:
       - "locale-gen"
       - "update-locale"
+
+  - name: configure neomutt
+    command: './configure'
+    args:
+      chdir: "{{neomutt.dir}}"
+
+  - name: make neomutt
+    make:
+      chdir: "{{neomutt.dir}}"
+
+  - name: make install neomutt
+    make:
+      chdir: "{{neomutt.dir}}"
+      target: install
+    become: yes
+    become_method: sudo
+
+
 
 - hosts: crouton
   tasks:
