@@ -7,7 +7,6 @@ all:
           ansible_host: 192.168.3.2
       vars:
         installed_packages:
-          - alltray
           - bash-completion
           - build-essential
           - cmus
@@ -35,19 +34,16 @@ all:
           - speedcrunch
           - sshfs
           - syncthing
-          - thunderbird
           - tilda
           - tint2
           - tmux
           - traceroute
-          - ttf-ancient-fonts-symbola
           - vim
           - vlc
           - wget
           - xbindkeys
           - xbindkeys-config
           - xsel
-          - xul-ext-lightning
 
             # neomutt deps
           - libidn11-dev
@@ -100,19 +96,16 @@ all:
           - speedcrunch
           - sshfs
           - syncthing
-          - thunderbird
           - tilda
           - tint2
           - tmux
           - traceroute
-          - ttf-ancient-fonts-symbola
           - vim
           - vlc
           - wget
           - xbindkeys
           - xbindkeys-config
           - xsel
-          - xul-ext-lightning
 
             # neomutt deps
           - libidn11-dev
