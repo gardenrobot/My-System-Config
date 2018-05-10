@@ -29,7 +29,7 @@ bind pager \cu previous-page
 
 # html viewing
 set mailcap_path = ~/.mutt/mailcap
-macro pager u 'urlview' 'Follow links with urlview'
+macro pager \cb 'urlview' 'Follow links with urlview'
 
 # smtp
 source ~/.pm_auth
