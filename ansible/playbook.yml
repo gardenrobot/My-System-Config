@@ -198,7 +198,7 @@
       - "update-locale"
 
   - name: configure neomutt
-    command: './configure'
+    command: './configure --disable-doc --notmuch --sasl'
     args:
       chdir: "{{neomutt.dir}}"
 
