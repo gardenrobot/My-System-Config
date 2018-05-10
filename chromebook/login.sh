@@ -12,3 +12,4 @@ sshfs kuruk:/home/sam/Shared/ /home/sam/Shared/ -o ro,reconnect,ServerAliveInter
 offlineimap &
 ~/.myconfig/tmux-start &
 yes | ~/.myconfig/calendar-sync.sh &
+riot-web &
