@@ -11,6 +11,7 @@ all:
           - build-essential
           - cmus
           - curl
+          - elinks
           - ffmpeg
           - firefox
           - fonts-hack-ttf
@@ -52,7 +53,7 @@ all:
           - libsasl2-dev
           - libxml2-utils
           - offlineimap
-          - urlscan
+          - urlview
           - xsltproc
     crouton:
       hosts:
@@ -70,6 +71,7 @@ all:
           - cmus
           - curl
           - evince
+          - elinks
           - ffmpeg
           - firefox
           - fonts-hack-ttf
@@ -114,7 +116,7 @@ all:
           - libsasl2-dev
           - libxml2-utils
           - offlineimap
-          - urlscan
+          - urlview
           - xsltproc
   vars:
     myconfig:
