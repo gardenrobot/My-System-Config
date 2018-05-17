@@ -5,7 +5,8 @@ setxkbmap us altgr-intl
 
 # These should only have one instance running
 if [[ ! $(ps -e|grep tilda) ]]; then
-tilda &
+# run after the desktop loads so that transparency works
+sleep 5 && tilda &
 fi
 
 if [[ ! $(ps -e|grep tint2) ]]; then
