@@ -25,13 +25,17 @@ if [[ ! $(ps -e|grep reddit-search-notifications) ]]; then
 python ~/.reddit-search-notifications/reddit-search-notifications.py &
 fi
 
+if [[ ! $(ps -e|grep calendar-sync) ]]; then
+yes | ~/.myconfig/calendar-sync.sh &
+fi
+
+if [[ ! $(ps -e|grep tmux) ]]; then
+~/.myconfig/tmux-start &
+fi
+
 #xbindkeys & # this is started by desktop. not currently sure of a way to disable that.
 
 # These can be run a second time without creating another instance.
 riot-web &
 discord-ptb &
 sshfs kuruk:/home/sam/Shared/ /home/sam/Shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
-
-# Other scipts
-~/.myconfig/tmux-start &
-yes | ~/.myconfig/calendar-sync.sh &

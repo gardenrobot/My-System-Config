@@ -4,9 +4,7 @@
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-if [[ ! $(ps -e|grep tmux) ]]; then
-	tmux new-session -d -n Masto tootstream
-	tmux new-window -d -n Mail neomutt
-	tmux new-window -d -n Calendar bash
-	tmux send-keys -t Calendar "khal" Enter
-fi
+tmux new-session -d -n Masto tootstream
+tmux new-window -d -n Mail neomutt
+tmux new-window -d -n Calendar bash
+tmux send-keys -t Calendar "khal" Enter
