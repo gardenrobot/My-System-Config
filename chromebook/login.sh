@@ -1,5 +1,7 @@
 #!/bin/bash
 
+brightness 100
+
 # Keyboard layout
 setxkbmap us altgr-intl
 
