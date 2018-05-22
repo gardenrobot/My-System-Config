@@ -13,7 +13,23 @@ fileext = ".ics"
 
 [storage calendar_personal_remote]
 type = "caldav"
+url = "https://nc3.jaba.hosting/remote.php/dav/calendars/1077/personal/"
+username = "1077"
+password.fetch = ["command", "~/.vdirsync_pass"]
 
+
+[pair calendar_personal_single]
+a = "calendar_personal_local_single"
+b = "calendar_personal_remote_single"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+
+[storage calendar_personal_local_single]
+type = "singlefile"
+path = "~/.reminder-cal/%s.ics"
+
+[storage calendar_personal_remote_single]
+type = "caldav"
 url = "https://nc3.jaba.hosting/remote.php/dav/calendars/1077/personal/"
 username = "1077"
 password.fetch = ["command", "~/.vdirsync_pass"]
@@ -31,7 +47,6 @@ fileext = ".vcf"
 
 [storage contacts_personal_remote]
 type = "carddav"
-
 url = "https://nc3.jaba.hosting/remote.php/dav/addressbooks/users/1077/contacts/"
 username = "1077"
 password.fetch = ["command", "~/.vdirsync_pass"]

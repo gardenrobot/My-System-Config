@@ -122,14 +122,15 @@
       state: directory
     with_items:
     - ~/.calendars
-    - ~/.config/khal/
     - ~/.config/keepassx/
+    - ~/.config/khal/
     - ~/.config/tilda/
     - ~/.config/tint2/
     - ~/.config/vdirsyncer/
     - ~/.contacts
     - ~/.fluxbox
     - ~/.mutt/
+    - ~/.reminder-cal
     - ~/.rtorrent_session/
 
   - name: get list of config files to delete
