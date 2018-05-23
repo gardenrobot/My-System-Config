@@ -29,6 +29,7 @@ all:
           - python3-pip
           - python3-setuptools
           - redshift-gtk
+          - remind
           - riot-web
           - silversearcher-ag
           - software-properties-common
@@ -70,8 +71,8 @@ all:
           - cheese
           - cmus
           - curl
-          - evince
           - elinks
+          - evince
           - ffmpeg
           - firefox
           - fonts-hack-ttf
@@ -91,6 +92,7 @@ all:
           - python-pip
           - python3-pip
           - redshift-gtk
+          - remind
           - riot-web
           - rtorrent
           - silversearcher-ag
