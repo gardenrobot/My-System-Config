@@ -21,6 +21,7 @@ macro index,pager a ":set confirmappend=no delete=yes\n<tag-prefix><save-message
 macro index,pager i ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+INBOX\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 
 # misc bindings
+bind index q noop
 bind index n toggle-new
 bind pager j next-line
 bind pager k previous-line
