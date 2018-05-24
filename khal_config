@@ -4,6 +4,11 @@
 path = ~/.calendars/personal
 color = dark green
 
+[[birthdays]]
+type = birthdays
+color = dark blue
+path = ~/.contacts/contacts/
+
 [default]
 
 [locale]
