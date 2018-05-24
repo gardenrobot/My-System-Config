@@ -2,7 +2,7 @@
 
 [[personal]]
 path = ~/.calendars/personal
-#color = light red
+color = dark green
 
 [default]
 
@@ -13,3 +13,4 @@ local_timezone = America/New_York
 [view]
 bold_for_light_color = False
 theme = dark
+frame = color
