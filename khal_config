@@ -13,6 +13,7 @@ path = ~/.contacts/contacts/
 
 [locale]
 firstweekday = 6
+longdateformat = %F
 local_timezone = America/New_York
 
 [view]
