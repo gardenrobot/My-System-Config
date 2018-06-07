@@ -15,6 +15,13 @@ fi
 
 while [ 1 ]
 do
+	# if it is 0:00-7:00, do nothing
+	if [ $(date +%H%M) -lt 700 ];
+	then
+		echo 'Too early'
+		continue
+	fi
+
 	# interate from the last date this was run until today, runnign 'remind' on each day
 	last_date_run=$(cat $last_date_run_fn)
 	start=$(date -d $last_date_run +%s)
