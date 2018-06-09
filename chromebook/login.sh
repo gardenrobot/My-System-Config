@@ -43,5 +43,5 @@ fi
 
 # These can be run a second time without creating another instance.
 riot-web &
-discord-ptb &
+#discord-ptb &
 sshfs kuruk:/home/sam/Shared/ /home/sam/Shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
