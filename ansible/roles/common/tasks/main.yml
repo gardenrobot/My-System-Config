@@ -1,0 +1,106 @@
+- name: remove folders
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+  - Documents
+  - Music
+  - Pictures
+  - Public
+  - Templates
+  - Videos
+
+- name: generate ssh keys
+  command: ssh-keygen -f "{{item.private}}" -N ''
+  args:
+    creates: "{{item.private}}"
+  with_items:
+    - "{{ssh_keys_personal}}"
+    - "{{ssh_keys_work}}"
+
+- name: link ssh keys
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  with_items:
+  - { src: "{{ssh_keys_personal.private}}", dest: "{{ssh_keys.private}}" }
+  - { src: "{{ssh_keys_personal.public}}",  dest: "{{ssh_keys.public}}" }
+
+- name: upgrade packages
+  apt:
+    upgrade: dist
+    update_cache: yes
+  become: yes
+  become_method: sudo
+
+- name: install packages
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{installed_packages}}"
+  become: yes
+  become_method: sudo
+
+- name: clone repos
+  git:
+    repo: "{{item.repo_http}}"
+    dest: "{{item.dir}}"
+    accept_hostkey: yes
+  with_items:
+    - "{{myconfig}}"
+    - "{{vundle}}"
+    - "{{neomutt}}"
+
+- name: use ssh repos
+  command: git remote set-url origin "{{item.repo_ssh}}"
+  args:
+    chdir: "{{item.dir}}"
+  with_items:
+    - "{{myconfig}}"
+
+- name: make config dirs
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - ~/.calendars
+  - ~/.config/keepassx/
+  - ~/.config/khal/
+  - ~/.config/tilda/
+  - ~/.config/tint2/
+  - ~/.config/vdirsyncer/
+  - ~/.contacts
+  - ~/.fluxbox
+  - ~/.mutt/
+  - ~/.reminder-cal
+  - ~/.rtorrent_session/
+
+- name: get list of config files to delete
+  stat:
+    path: "{{item.dest}}"
+  register: st
+  with_items: "{{linked_files}}"
+
+- name: remove existing user config files
+  file:
+    path: "{{item.stat.path}}"
+    state: absent
+  when: item.stat.exists and item.stat.isreg == True
+  with_items: "{{st.results}}"
+
+
+- name: link user config files
+  file:
+    src: "{{myconfig.dir}}/{{item.src}}"
+    dest: "{{item.dest}}"
+    state: link
+  with_items: "{{linked_files}}"
+
+- name: install vim plugins
+  shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+
+- name: decrypt files
+  shell: echo "{{item.data}}" > {{item.path}}
+  with_items:
+    - { data: "{{ssh_config}}",     path: "~/.ssh/config" }

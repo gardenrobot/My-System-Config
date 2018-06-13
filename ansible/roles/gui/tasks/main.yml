@@ -1,0 +1,85 @@
+- name: add repos
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+    #codename: yes # supported in verison 2.3
+  with_items:
+  - deb https://riot.im/packages/debian/ xenial main
+  - deb https://apt.syncthing.net/ syncthing stable
+  #- ppa:kasra-mp/ubuntu-indicator-weather # TODO ppas do not work on non-ubuntu with ansible version <2.3
+  become: yes
+  become_method: sudo
+
+#- name: download repo keys
+#  get_url:
+#    url: "{{item.url}}"
+#    dest: "{{item.dest}}"
+#  with_items: "{{deb_repo_keys}}"
+#
+#- name: add repo keys
+#  command: apt-key add "{{item.dest}}"
+#  become: yes
+#  become_method: sudo
+#  with_items: "{{deb_repo_keys}}"
+
+- name: remove packages
+  apt:
+    name: xscreensaver
+    state: absent
+    autoremove: yes
+  become: yes
+  become_method: sudo
+
+- name: download deb files
+  get_url:
+    url:  "{{item.url}}"
+    dest: "{{item.dest}}"
+  with_items: "{{deb_installs}}"
+
+- name: install deb files
+  shell: yes | gdebi "{{item.dest}}"
+  become: yes
+  become_method: sudo
+  args:
+    creates: "{{item.bin_path}}"
+  with_items: "{{deb_installs}}"
+
+- name: install pip packages
+  pip:
+    name: "{{item}}"
+    executable: pip3
+  with_items:
+    - khal
+    - tootstream
+    - vdirsyncer
+
+- name: generate locales
+  command: "{{item}}"
+  become: yes
+  become_method: sudo
+  with_items:
+    - "locale-gen"
+    - "update-locale"
+
+# TODO make a block
+- name: configure neomutt
+  command: './configure --disable-doc --notmuch --sasl'
+  args:
+    chdir: "{{neomutt.dir}}"
+
+- name: make neomutt
+  make:
+    chdir: "{{neomutt.dir}}"
+
+- name: make install neomutt
+  make:
+    chdir: "{{neomutt.dir}}"
+    target: install
+  become: yes
+  become_method: sudo
+
+- name: update font cache
+  command: fc-cache -f
+
+
+
