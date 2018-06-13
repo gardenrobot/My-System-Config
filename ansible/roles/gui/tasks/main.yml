@@ -61,7 +61,14 @@
     - "locale-gen"
     - "update-locale"
 
-# TODO make a block
+- name: download neomutt
+  git:
+    repo: "{{neomutt.repo_http}}"
+    dest: "{{neomutt.dir}}"
+    accept_hostkey: yes
+  tags:
+    - a
+
 - name: configure neomutt
   command: './configure --disable-doc --notmuch --sasl'
   args:
@@ -71,7 +78,7 @@
   make:
     chdir: "{{neomutt.dir}}"
 
-- name: make install neomutt
+- name: install neomutt
   make:
     chdir: "{{neomutt.dir}}"
     target: install

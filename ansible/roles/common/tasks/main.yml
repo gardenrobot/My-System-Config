@@ -50,7 +50,6 @@
   with_items:
     - "{{myconfig}}"
     - "{{vundle}}"
-    - "{{neomutt}}"
 
 - name: use ssh repos
   command: git remote set-url origin "{{item.repo_ssh}}"

@@ -120,6 +120,34 @@ all:
           - offlineimap
           - urlview
           - xsltproc
+    pi:
+      hosts:
+        pi1:
+          ansible_port: 22
+          ansible_host: 192.168.3.7
+          roles:
+            - pi
+      vars:
+        installed_packages:
+          - bash-completion
+          - build-essential
+          - curl
+          - elinks
+          - ffmpeg
+          - git
+          - htop
+          - iceweasel
+          - links
+          - nano
+          - ncdu
+          - silversearcher-ag
+          - sshfs
+          - syncthing
+          - tmux
+          - traceroute
+          - vim
+          - wget
+
   vars:
     myconfig:
       dir:        ~/.myconfig
