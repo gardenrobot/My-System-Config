@@ -213,7 +213,7 @@
     become_method: sudo
 
   - name: update font cache
-  - command: fc-cache -f
+    command: fc-cache -f
 
 
 - hosts: crouton
