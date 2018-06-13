@@ -27,10 +27,6 @@ if [[ ! $(ps -e|grep syncthing) ]]; then
 syncthing -no-browser &
 fi
 
-if [[ ! $(ps -e|grep reddit-search-notifications) ]]; then
-python ~/.reddit-search-notifications/reddit-search-notifications.py &
-fi
-
 if [[ ! $(ps -e|grep calendar-sync) ]]; then
 yes | ~/.myconfig/calendar-sync.sh &
 fi

@@ -126,11 +126,6 @@ all:
       repo_http:  https://github.com/samclotf/My-System-Config.git
       repo_ssh:   git@github.com:samclotf/My-System-Config.git
 
-    reddit:
-      dir:        ~/.reddit-search-notifications
-      repo_http:  https://github.com/samclotf/reddit-search-notifications.git
-      repo_ssh:   git@github.com:samclotf/reddit-search-notifications.git
-
     vundle:
       dir:        ~/.vim/bundle/Vundle.vim
       repo_http:  https://github.com/VundleVim/Vundle.vim.git

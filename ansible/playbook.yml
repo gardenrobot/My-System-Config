@@ -104,7 +104,6 @@
       accept_hostkey: yes
     with_items:
       - "{{myconfig}}"
-      - "{{reddit}}"
       - "{{vundle}}"
       - "{{neomutt}}"
 
@@ -114,7 +113,6 @@
       chdir: "{{item.dir}}"
     with_items:
       - "{{myconfig}}"
-      - "{{reddit}}"
 
   - name: make config dirs
     file:
@@ -220,18 +218,6 @@
 
 - hosts: crouton
   tasks:
-
-  - name: cp reddit config
-    command: cp "{{myconfig.dir}}/reddit_config" "{{reddit.dir}}/config"
-
-  - name: install pip requirements
-    pip:
-      requirements: "{{reddit.dir}}/requirements.txt"
-
-  - name: update config
-    command: python reddit-search-notifications.py -r
-    args:
-      chdir: "{{reddit.dir}}"
 
   - name: titlebar buttons
     shell: DISPLAY=:1.0 xfconf-query -c xfwm4 -p /general/button_layout -s 'CHM|O'
