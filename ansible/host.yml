@@ -140,6 +140,7 @@ all:
           - links
           - nano
           - ncdu
+          - python3-pip
           - silversearcher-ag
           - sshfs
           - syncthing
