@@ -11,9 +11,9 @@ if [[ ! $(ps -e|grep tilda) ]]; then
 sleep 5 && tilda &
 fi
 
-if [[ ! $(ps -e|grep remind.sh) ]]; then
-~/.myconfig/remind.sh &
-fi
+#if [[ ! $(ps -e|grep remind.sh) ]]; then
+#~/.myconfig/remind.sh &
+#fi
 
 if [[ ! $(ps -e|grep tint2) ]]; then
 tint2 -c ~/.myconfig/tint2rc &
@@ -27,9 +27,9 @@ if [[ ! $(ps -e|grep syncthing) ]]; then
 syncthing -no-browser &
 fi
 
-if [[ ! $(ps -e|grep calendar-sync) ]]; then
-yes | ~/.myconfig/calendar-sync.sh &
-fi
+#if [[ ! $(ps -e|grep calendar-sync) ]]; then
+#yes | ~/.myconfig/calendar-sync.sh &
+#fi
 
 if [[ ! $(ps -e|grep tmux) ]]; then
 ~/.myconfig/tmux-start &
