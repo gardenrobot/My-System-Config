@@ -195,7 +195,7 @@ all:
       - src: "keepassx2.ini"
         dest: "~/.config/keepassx/keepassx2.ini"
       - src: "khal_config"
-        dest: ".config/khal/config"
+        dest: "~/.config/khal/config"
       - src: "mutt/sidebar"
         dest: "~/.mutt/sidebar"
       - src: "mutt/mailcap"
