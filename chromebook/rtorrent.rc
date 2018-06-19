@@ -1,5 +1,5 @@
 check_hash = yes
-directory = ~/Downloads/
+directory = ~/downloads/
 session = ~/.rtorrent_session/
 max_memory_usage = 536870912
 port_range = 6962-6962

@@ -11,7 +11,7 @@
   ignore_errors: yes # This fails if the xfce4-power-manager settings menu has not been opened yet. Fix later.
 
 - name: set wallpaper
-  shell: DISPLAY=:1.0 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/Syncthing/Wallpaper/shards-pink.jpg
+  shell: DISPLAY=:1.0 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set ~/syncthing/Wallpaper/shards-pink.jpg
   ignore_errors: yes # This fails if the wallpaper settings menu has not been opened yet. Fix later.
 
 - name: update rc.local
@@ -24,3 +24,19 @@
   become: yes
   become_method: sudo
 
+- name: copy crouton shares
+  copy:
+    src: "{{myconfig.dir}}/chromebook/crouton-shares"
+    dest: /etc/crouton/shares
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  become: yes
+  become_method: sudo
+
+
+- name: unmount ~/Downloads
+  command: umount ~/Downloads
+
+- name: delete old downloads
+  command: rmdir ~/Downloads

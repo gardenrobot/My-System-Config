@@ -66,8 +66,6 @@
     repo: "{{neomutt.repo_http}}"
     dest: "{{neomutt.dir}}"
     accept_hostkey: yes
-  tags:
-    - a
 
 - name: configure neomutt
   command: './configure --disable-doc --notmuch --sasl'
@@ -87,6 +85,4 @@
 
 - name: update font cache
   command: fc-cache -f
-
-
 
