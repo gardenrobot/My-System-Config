@@ -37,6 +37,8 @@
 
 - name: unmount ~/Downloads
   command: umount ~/Downloads
+  ignore_errors: yes
 
 - name: delete old downloads
   command: rmdir ~/Downloads
+  ignore_errors: yes
