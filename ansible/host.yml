@@ -82,7 +82,6 @@ all:
           - git
           - gpicview
           - htop
-          - indicator-weather
           - keepassx
           - libreoffice
           - links
