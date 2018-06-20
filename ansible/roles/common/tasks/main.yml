@@ -85,8 +85,10 @@
   file:
     path: "{{item.stat.path}}"
     state: absent
-  when: item.stat.exists and item.stat.isreg == True
+  when: item.stat.exists #and item.stat.isreg == True
   with_items: "{{st.results}}"
+  tags:
+    - a
 
 
 - name: link user config files
@@ -95,6 +97,8 @@
     dest: "{{item.dest}}"
     state: link
   with_items: "{{linked_files}}"
+  tags:
+    - a
 
 - name: install vim plugins
   shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
