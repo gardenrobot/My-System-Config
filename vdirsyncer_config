@@ -4,7 +4,7 @@ status_path = "~/.vdirsyncer/status/"
 [pair calendar_personal]
 a = "calendar_personal_local"
 b = "calendar_personal_remote"
-collections = ["from a", "from b"]
+collections = ["radicale_calendar"]
 
 [storage calendar_personal_local]
 type = "filesystem"
@@ -13,15 +13,15 @@ fileext = ".ics"
 
 [storage calendar_personal_remote]
 type = "caldav"
-url = "https://nc3.jaba.hosting/remote.php/dav/calendars/1077/personal/"
-username = "1077"
+url = "http://192.168.3.7:5232/"
+username = "sam"
 password.fetch = ["command", "~/.vdirsync_pass"]
 
 
 [pair calendar_personal_single]
 a = "calendar_personal_local_single"
 b = "calendar_personal_remote_single"
-collections = ["from a", "from b"]
+collections = ["radicale_calendar"]
 conflict_resolution = "b wins"
 
 [storage calendar_personal_local_single]
@@ -30,15 +30,15 @@ path = "~/.reminder-cal/%s.ics"
 
 [storage calendar_personal_remote_single]
 type = "caldav"
-url = "https://nc3.jaba.hosting/remote.php/dav/calendars/1077/personal/"
-username = "1077"
+url = "http://192.168.3.7:5232/"
+username = "sam"
 password.fetch = ["command", "~/.vdirsync_pass"]
 
 
 [pair contacts_personal]
 a = "contacts_personal_local"
 b = "contacts_personal_remote"
-collections = ["from a", "from b"]
+collections = ["radicale_contacts"]
 
 [storage contacts_personal_local]
 type = "filesystem"
@@ -47,7 +47,7 @@ fileext = ".vcf"
 
 [storage contacts_personal_remote]
 type = "carddav"
-url = "https://nc3.jaba.hosting/remote.php/dav/addressbooks/users/1077/contacts/"
-username = "1077"
+url = "http://192.168.3.7:5232/"
+username = "sam"
 password.fetch = ["command", "~/.vdirsync_pass"]
 

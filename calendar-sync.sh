@@ -11,7 +11,7 @@ do
 	echo 'Syncing'
 	vdirsyncer sync
 	echo 'Running ics2rem'
-	ics2rem ~/.reminder-cal/personal.ics ~/.reminders
+	ics2rem ~/.reminder-cal/radicale_calendar.ics ~/.reminders
 	echo "Done. Sleeping for $sleep seconds."
 	sleep $sleep
 done
