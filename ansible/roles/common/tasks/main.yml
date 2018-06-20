@@ -103,3 +103,8 @@
   shell: echo "{{item.data}}" > {{item.path}}
   with_items:
     - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
+
+- name: set timezone
+  command: timedatectl set-timezone 'America/New_York'
+  become: yes
+  become_method: sudo
