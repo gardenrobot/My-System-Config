@@ -1,0 +1,57 @@
+- name: install packages
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - radicale
+    - apache2-utils
+    - python-passlib
+  become: yes
+  become_method: sudo
+
+# htpasswd module is broken in some debian versions. Using command module instead until it is fixed.
+#- name: create user sam
+#  htpasswd:
+#    path: /etc/radicale/users
+#    name: sam
+#    password: "{{caldav_pass}}"
+#    owner: radicale
+#    group: radicale
+#  become: yes
+#  become_method: sudo
+
+- name: create user sam 1
+  command: htpasswd -b -B -c "{{user_fn}}" sam "{{caldav_pass}}"
+  args:
+    creates: "{{user_fn}}"
+  become: yes
+  become_method: sudo
+
+- name: create user sam 2
+  file:
+    path: "{{user_fn}}"
+    state: file
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  become: yes
+  become_method: sudo
+
+- name: copy config files
+  copy:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+    owner: root
+    group: root
+  with_items:
+    - { src: "roles/radicale/files/config", dest: "/etc/radicale/config" }
+    - { src: "roles/radicale/files/logging", dest: "/etc/radicale/logging" }
+  become: yes
+  become_method: sudo
+
+- name: restart service
+  service:
+    name: radicale
+    state: restarted
+  become: yes
+  become_method: sudo

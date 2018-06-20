@@ -1,0 +1,3 @@
+caldav_pass: "{{ lookup('file', 'roles/radicale/files/caldav.vault') }}"
+
+user_fn: /etc/radicale/users
