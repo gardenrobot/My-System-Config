@@ -6,7 +6,6 @@
   with_items:
   - deb https://riot.im/packages/debian/ xenial main
   - deb https://apt.syncthing.net/ syncthing stable
-  #- ppa:kasra-mp/ubuntu-indicator-weather # TODO ppas do not work on non-ubuntu with ansible version <2.3
   become: yes
   become_method: sudo
 
