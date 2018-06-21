@@ -174,7 +174,7 @@ all:
       private:  ~/.ssh/id_rsa_work
       public:   ~/.ssh/id_rsa_work.pub
 
-    ssh_config: "{{ lookup('file', '{{myconfig.dir}}/ssh/config.vault') }}"
+    ssh_config: "{{ lookup('file', '{{myconfig.dir}}/user_files/ssh_config.vault') }}"
 
     linked_files:
       - src: "user_files/agignore"
