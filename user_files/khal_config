@@ -1,13 +1,13 @@
 [calendars]
 
 [[personal]]
-path = ~/.calendars/personal
+path = ~/.calendars/radicale_calendar/
 color = dark green
 
 [[birthdays]]
 type = birthdays
 color = dark blue
-path = ~/.contacts/contacts/
+path = ~/.contacts/radicale_contacts/
 
 [default]
 
