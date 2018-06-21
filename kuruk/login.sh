@@ -11,7 +11,7 @@ offlineimap &
 fi
 
 if [[ ! $(ps -e|grep calendar-sync) ]]; then
-yes | ~/.myconfig/calendar-sync.sh &
+yes | ~/.myconfig/scripts/calendar-sync.sh &
 fi
 
 if [[ ! $(ps -e|grep syncthing) ]]; then
@@ -19,7 +19,7 @@ syncthing -no-browser &
 fi
 
 if [[ ! $(pgrep -u sam tmux) ]]; then
-~/.myconfig/tmux-start &
+~/.myconfig/scripts/tmux-start &
 fi
 
 # These can be run a second time without creating another instance.
