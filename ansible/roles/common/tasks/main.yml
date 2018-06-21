@@ -75,20 +75,12 @@
   - ~/.reminder-cal
   - ~/.rtorrent_session/
 
-- name: get list of config files to delete
-  stat:
-    path: "{{item.dest}}"
-  register: st
-  with_items: "{{linked_files}}"
-
 - name: remove existing user config files
   file:
     path: "{{item.stat.path}}"
     state: absent
-  when: item.stat.exists #and item.stat.isreg == True
+  when: item.stat.exists
   with_items: "{{st.results}}"
-  tags:
-    - a
 
 
 - name: link user config files
@@ -97,8 +89,6 @@
     dest: "{{item.dest}}"
     state: link
   with_items: "{{linked_files}}"
-  tags:
-    - a
 
 - name: install vim plugins
   shell: vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
@@ -107,8 +97,3 @@
   shell: echo "{{item.data}}" > {{item.path}}
   with_items:
     - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
-
-- name: set timezone
-  command: timedatectl set-timezone 'America/New_York'
-  become: yes
-  become_method: sudo

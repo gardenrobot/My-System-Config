@@ -21,6 +21,11 @@
 - hosts: pi
   roles:
     - radicale
+  tasks:
+    - name: set timezone
+      command: timedatectl set-timezone 'America/New_York'
+      become: yes
+      become_method: sudo
 
 - hosts: desktop
   roles:
