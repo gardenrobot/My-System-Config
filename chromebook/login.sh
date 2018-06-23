@@ -16,7 +16,7 @@ if [[ ! $(ps -e|grep remind.sh) ]]; then
 fi
 
 if [[ ! $(ps -e|grep tint2) ]]; then
-tint2 -c ~/.myconfig/tint2rc &
+tint2 -c ~/.myconfig/user_files/tint2rc &
 fi
 
 if [[ ! $(ps -e|grep offlineimap) ]]; then
