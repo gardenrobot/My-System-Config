@@ -36,9 +36,8 @@
 
 - name: install packages
   apt:
-    name: "{{item}}"
+    name: "{{installed_packages}}"
     state: present
-  with_items: "{{installed_packages}}"
   become: yes
   become_method: sudo
 

@@ -1,0 +1,45 @@
+installed_packages:
+  - cheese
+  - cmus
+  - evince
+  - firefox
+  - fonts-hack-ttf
+  - fonts-noto
+  - gedit
+  - gimp
+  - gpicview
+  - keepassx
+  - libreoffice
+  - notmuch
+  - python-pip
+  - python3-setuptools
+  - redshift-gtk
+  - remind
+  - riot-web
+  - rtorrent
+  - software-properties-common
+  - speedcrunch
+  - tilda
+  - tint2
+  - vlc
+  - xbindkeys
+  - xbindkeys-config
+  - xsel
+
+neomutt:
+  dir: /tmp/neomutt
+  repo_http: https://github.com/neomutt/neomutt
+
+deb_repo_keys:
+  - url: https://riot.im/packages/debian/repo-key.asc
+    dest: /tmp/riot-key.asc
+  - url: https://syncthing.net/release-key.txt
+    dest: /tmp/syncthing-key.asc
+
+deb_installs:
+  - url: https://discordapp.com/api/download/ptb?platform=linux&format=deb
+    dest: /tmp/ansible-bridge.deb
+    bin_path: /usr/bin/discord-ptb
+  - url: https://protonmail.com/download/protonmail-bridge_1.0.2-1_amd64.deb
+    dest: /tmp/ansible-bridge.deb
+    bin_path: /usr/bin/Desktop-Bridge
