@@ -1,0 +1,39 @@
+- name: install packages
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - borgbackup
+    - borgbackup-doc
+  become: yes
+  become_method: sudo
+
+- name: create repo
+  shell: "borg init --encryption=none {{borg_repo}}"
+  become: yes
+  become_method: sudo
+  ignore_errors: yes # will error if repo exists
+
+- name: copy backup script
+  copy:
+    src: "roles/borg/files/borg-backup.sh"
+    dest: "{{script_location}}"
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  become: yes
+  become_method: sudo
+
+
+- name: add backup script to cron
+  cron:
+    name: "borg backup"
+    hour: "4"
+    job: "{{script_location}}"
+  become: yes
+  become_method: sudo
+
+- name: run backup script
+  command: "{{script_location}}"
+  become: yes
+  become_method: sudo

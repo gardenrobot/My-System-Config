@@ -21,6 +21,7 @@
 - hosts: pi
   roles:
     - radicale
+    - borg
   tasks:
     - name: set timezone
       command: timedatectl set-timezone 'America/New_York'
