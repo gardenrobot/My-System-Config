@@ -19,23 +19,24 @@ do
 	if [ $(date +%H%M) -lt 700 ];
 	then
 		echo 'Too early'
-		continue
+	else
+
+		# interate from the last date this was run until today, runnign 'remind' on each day
+		last_date_run=$(cat $last_date_run_fn)
+		start=$(date -d $last_date_run +%s)
+		end=$(date +%s);
+		while [[ "$start" -le "$end" ]];
+		do
+			current_date=$(date -d "@$start" +%F)
+
+			remind '-knotify-send -u critical %s' ~/.reminders $current_date
+
+			let start+=86400
+		done
+		current_date=$(date -d "@$start" +%F)
+		echo $current_date > $last_date_run_fn
 	fi
 
-	# interate from the last date this was run until today, runnign 'remind' on each day
-	last_date_run=$(cat $last_date_run_fn)
-	start=$(date -d $last_date_run +%s)
-	end=$(date +%s);
-	while [[ "$start" -le "$end" ]];
-	do
-		current_date=$(date -d "@$start" +%F)
-
-		remind '-knotify-send -u critical %s' ~/.reminders $current_date
-
-		let start+=86400
-	done
-	current_date=$(date -d "@$start" +%F)
-	echo $current_date > $last_date_run_fn
 	echo 'Done. Sleeping.'
 	sleep $interval
 done
