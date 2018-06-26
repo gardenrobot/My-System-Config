@@ -29,6 +29,7 @@
   cron:
     name: "borg backup"
     hour: "4"
+    minute: "0"
     job: "{{script_location}}"
   become: yes
   become_method: sudo
