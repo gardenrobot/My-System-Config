@@ -95,3 +95,10 @@
   shell: echo "{{item.data}}" > {{item.path}}
   with_items:
     - { data: "{{ssh_config}}",     path: "~/.ssh/config" }
+
+- name: rm motd
+  file:
+    path: /etc/motd
+    state: absent
+  become: yes
+  become_method: sudo
