@@ -5,6 +5,6 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
 tmux new-session -d -n Masto tootstream
-tmux new-window -d -n Mail neomutt
+tmux new-window -d -n Mail -c ~/downloads/ neomutt
 tmux new-window -d -n Calendar ikhal
 tmux new-window -d -n Music cmus
