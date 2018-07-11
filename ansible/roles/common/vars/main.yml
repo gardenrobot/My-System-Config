@@ -17,6 +17,7 @@ installed_packages:
   - traceroute
   - vim
   - wget
+  - zip
 
 vundle:
   dir:        ~/.vim/bundle/Vundle.vim
