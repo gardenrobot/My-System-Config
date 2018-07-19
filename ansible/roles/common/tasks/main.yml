@@ -27,6 +27,16 @@
   - { src: "{{ssh_keys_personal.private}}", dest: "{{ssh_keys.private}}" }
   - { src: "{{ssh_keys_personal.public}}",  dest: "{{ssh_keys.public}}" }
 
+- name: add syncthing pgp key
+  shell: curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+  become: yes
+  become_method: sudo
+
+- name: add syncthing apt source
+  shell: echo deb https://apt.syncthing.net/ syncthing stable > /etc/apt/sources.list.d/syncthing.list
+  become: yes
+  become_method: sudo
+
 - name: upgrade packages
   apt:
     upgrade: dist
