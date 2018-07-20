@@ -64,7 +64,7 @@
   become: yes
   become_method: sudo
   with_items:
-    - "locale-gen"
+    - "locale-gen en_US.UTF-8"
     - "update-locale"
 
 - name: install nemutt dependencies
