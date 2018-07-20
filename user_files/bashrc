@@ -10,16 +10,19 @@ machine="a"
 
 if [ $machine == "corriander" ];
 then
-	heart_color='\[\033[38;5;1m\]' # red
+	heart_color='\[\033[38;5;4m\]' # blue
 elif [ $machine == "redpepper" ];
 then
-	heart_color='\[\033[38;5;2m\]' # green
+	heart_color='\[\033[38;5;1m\]' # red
 elif [ $machine == "greenpepper" ];
 then
-	heart_color='\[\033[38;5;4m\]' # blue
+	heart_color='\[\033[38;5;2m\]' # green
 elif [ $machine == "ginger" ];
 then
 	heart_color='\[\033[38;5;11m\]' # yellow
+elif [ $machine == "cilantro" ];
+then
+	heart_color='\[\033[38;5;13m\]' # pink
 else
 	heart_color='' # default to white
 fi
