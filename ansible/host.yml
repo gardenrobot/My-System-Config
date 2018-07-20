@@ -2,22 +2,27 @@ all:
   children:
     desktop:
       hosts:
-        kuruk:
+        corriander:
           ansible_port: 22
           ansible_host: 192.168.3.2
     crouton:
       hosts:
-        chromebook1:
+        redpepper:
           ansible_port: 22
           ansible_host: 192.168.3.10
-        chromebook2:
+        greenpepper:
           ansible_port: 22
           ansible_host: 192.168.3.11
     pi:
       hosts:
-        pi1:
+        ginger:
           ansible_port: 22
           ansible_host: 192.168.3.7
+    vms:
+      hosts:
+        cilantro:
+          ansible_port: 22
+          ansible_host: 192.168.3.20
 
   vars:
     myconfig:

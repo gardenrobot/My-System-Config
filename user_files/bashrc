@@ -8,16 +8,16 @@
 machine="a"
 [ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
 
-if [ $machine == "kuruk" ];
+if [ $machine == "corriander" ];
 then
 	heart_color='\[\033[38;5;1m\]' # red
-elif [ $machine == "chromebook1" ];
+elif [ $machine == "redpepper" ];
 then
 	heart_color='\[\033[38;5;2m\]' # green
-elif [ $machine == "chromebook2" ];
+elif [ $machine == "greenpepper" ];
 then
 	heart_color='\[\033[38;5;4m\]' # blue
-elif [ $machine == "pi" ];
+elif [ $machine == "ginger" ];
 then
 	heart_color='\[\033[38;5;11m\]' # yellow
 else
