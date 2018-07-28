@@ -9,25 +9,32 @@ machine="a"
 [ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
 
 if [ $machine == "corriander" ]; then
-	heart_color='\[\033[38;5;4m\]'	# blue
+	heart_foreground='\[\033[38;5;4m\]'	# blue
 
 elif [ $machine == "redpepper" ]; then
-	heart_color='\[\033[38;5;1m\]'	# red
+	heart_foreground='\[\033[38;5;1m\]'	# red
 
 elif [ $machine == "greenpepper" ]; then
-	heart_color='\[\033[38;5;2m\]'	# green
+	heart_foreground='\[\033[38;5;2m\]'	# green
 
 elif [ $machine == "ginger" ]; then
-	heart_color='\[\033[38;5;11m\]'	# yellow
+	heart_foreground='\[\033[38;5;11m\]'	# yellow
 
 elif [ $machine == "cilantro" ]; then
-	heart_color='\[\033[38;5;6m\]'	# teal
+	heart_foreground='\[\033[38;5;6m\]'	# teal
 
 else
-	heart_color='' # default to white
+	heart_foreground='' # default to white
 fi
 
-PS1="\[\033[38;5;128m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart_color}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+if [ $(whoami) == "root" ]; then
+	heart_background='\[\033[48;5;15m\]'
+else
+	heart_background=''
+fi
+
+
+PS1="\[\033[38;5;128m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart_foreground}${heart_background}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 PS2='> '
 PS3='> '
 PS4='+ '
