@@ -45,4 +45,4 @@ set include
 set sig_on_top=yes
 
 # notifications
-set new_mail_command="notify-send -u critical -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
+set new_mail_command="/usr/bin/notify-send -u critical -i /usr/share/icons/protonmail/Desktop-Bridge.svg '%n new messages'"
