@@ -77,5 +77,10 @@
     m:0x0 + c:173
     XF86AudioPrev 
 
+#Run command
+"xfce4-appfinder --collapsed"
+    m:0x8 + c:64
+    Alt + Alt_L 
+
 #
 # End of xbindkeys configuration
