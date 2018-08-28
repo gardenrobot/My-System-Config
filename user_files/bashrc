@@ -75,4 +75,4 @@ export LANG=C.UTF-8
 
 export SVN_EDITOR=vim
 
-export PATH=~/.bin/:$PATH
+export PATH=~/.bin/:~/.local/bin/:$PATH
