@@ -16,7 +16,8 @@ if [[ ! $(ps -e|grep remind.sh) ]]; then
 fi
 
 if [[ ! $(ps -e|grep tint2) ]]; then
-tint2 -c ~/.myconfig/user_files/tint2rc &
+#tint2 -c ~/.myconfig/user_files/tint2rc &
+echo pass
 fi
 
 if [[ ! $(ps -e|grep offlineimap) ]]; then
@@ -40,4 +41,4 @@ fi
 # These can be run a second time without creating another instance.
 riot-web &
 #discord-ptb &
-sshfs corriander:/home/sam/shared/ /home/sam/shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
+sshfs Sam@corriander:/cygdrive/e/shared/ /home/sam/shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
