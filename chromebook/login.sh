@@ -41,4 +41,4 @@ fi
 # These can be run a second time without creating another instance.
 riot-web &
 #discord-ptb &
-sshfs Sam@corriander:/cygdrive/e/shared/ /home/sam/shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
+sshfs torrent@corriander:/cygdrive/e/shared/ /home/sam/shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
