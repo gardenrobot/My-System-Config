@@ -42,3 +42,4 @@ fi
 riot-web &
 #discord-ptb &
 sshfs torrent@corriander:/cygdrive/e/shared/ /home/sam/shared/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
+sshfs torrent@corriander:/cygdrive/e/private/ /home/sam/private/ -o ro,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3 &
