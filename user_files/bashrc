@@ -29,12 +29,15 @@ fi
 
 if [ $(whoami) == "root" ]; then
 	heart_background='\[\033[48;5;15m\]'
+	heart_background_escape='\[$(tput sgr0)\]'
 else
 	heart_background=''
+	heart_background_escape=''
 fi
 
 
-PS1="\[\033[38;5;128m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] \w \[$(tput sgr0)\]${heart_foreground}${heart_background}❤\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+heart='❤'
+PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${heart_foreground}${heart_background}${heart}\[\033[38;5;15m\] ${heart_background_escape}"
 PS2='> '
 PS3='> '
 PS4='+ '
