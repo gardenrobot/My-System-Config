@@ -38,7 +38,7 @@ set smtp_url=smtp://samclot@protonmail.com@127.0.0.1:1025
 set smtp_pass=$my_pass
 
 # composing
-set realname="Samantha Erika Clotfelter"
+set realname="Sam Erika Clotfelter"
 set from="samclot@protonmail.com"
 set fast_reply
 set include
