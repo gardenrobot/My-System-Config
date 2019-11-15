@@ -1,32 +1,49 @@
-#
-# /etc/bash.bashrc
-#
-
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
-machine="a"
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Disable flow control so Ctrl-s doesn't lock up bash
+stty -ixon
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Set the PS1 heart options.
+# Set the color.
+machine=""
 [ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
 
-if [ $machine == "corriander" ]; then
+if [ "$machine" == "corriander" ]; then
 	heart_foreground='\[\033[38;5;4m\]'	# blue
-
-elif [ $machine == "redpepper" ]; then
-	heart_foreground='\[\033[38;5;1m\]'	# red
-
-elif [ $machine == "greenpepper" ]; then
+elif [ "$machine" == "pepper" ]; then
 	heart_foreground='\[\033[38;5;2m\]'	# green
-
-elif [ $machine == "ginger" ]; then
+elif [ "$machine" == "ginger" ]; then
 	heart_foreground='\[\033[38;5;11m\]'	# yellow
-
-elif [ $machine == "cilantro" ]; then
+elif [ "$machine" == "cilantro" ]; then
 	heart_foreground='\[\033[38;5;6m\]'	# teal
-
+elif [ "$machine" == "work" ]; then
+	heart_foreground='\[\033[38;5;1m\]'	# red
 else
 	heart_foreground='' # default to white
 fi
-
+# Set the background if root.
 if [ $(whoami) == "root" ]; then
 	heart_background='\[\033[48;5;15m\]'
 	heart_background_escape='\[$(tput sgr0)\]'
@@ -34,35 +51,15 @@ else
 	heart_background=''
 	heart_background_escape=''
 fi
+# Set whether to use the emoji or the emoticon
+if [ $no_emoji ]; then
+	heart='<3'
+else
+	heart='❤'
+fi
 
-
-heart='❤'
+# Set the prompt
 PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${heart_foreground}${heart_background}${heart}\[\033[38;5;15m\] ${heart_background_escape}"
-PS2='> '
-PS3='> '
-PS4='+ '
-
-# LS Colors
-export LS_COLORS='no=00:fi=00:di=00;35:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:'
-
-case ${TERM} in
-  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-
-    ;;
-  screen)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-    ;;
-esac
-
-[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-
-# Editor
-export VISUAL=vim
-export EDITOR="$VISUAL"
-
-# Notifications
-[ -r ~/.bash_notifications ] && . ~/.bash_notifications
 
 # Aliases
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
@@ -70,12 +67,3 @@ export EDITOR="$VISUAL"
 # Machine Specific bashrc
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
 
-# Disable flow control keys
-stty ixany
-stty ixoff -ixon
-
-export LANG=C.UTF-8
-
-export SVN_EDITOR=vim
-
-export PATH=~/.bin/:~/.local/bin/:$PATH
