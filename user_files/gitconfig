@@ -4,16 +4,3 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) %an'
 	co = checkout
-[merge]
-	tool = vimdiff
-	conflictstyle = diff3
-[mergetool]
-	prompt = false
-[gitreview]
-	username = samclot
-#[core]
-#	autocrlf = true
-[color "diff"]
-	meta = blue bold
-[push]
-	default = simple
