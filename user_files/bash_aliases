@@ -36,3 +36,5 @@ if [ "$(which sw_vers)" ]; then
 else
 	alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "command finished"'
 fi
+
+alias k=kubectl
