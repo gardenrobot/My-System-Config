@@ -21,6 +21,9 @@ let $BASH_ENV = "~/.vimrc_bash"
 " Color Scheme
 colorscheme desert
 
+" Enable syntax highlighting
+syntax on
+
 " Enable Rainbox Parantheses
 au VimEnter * RainbowParenthesesToggle
 
