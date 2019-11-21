@@ -94,7 +94,7 @@ HEARTLINE14='_________░▒▓██___________'
 HEARTLINE15='_______░▒▓██_____________'
 HEARTLINE16='_____░▒▓██_______________'
 BLK='\\033[0;30m'
-BRN='\\033[0;33m'
+BRN='\\033[0;90m' # This is color code for light black. Set to brown in terminal settings.
 RED='\\033[0;31m'
 ORA='\\033[38;5;208m'
 YEL='\\033[38;5;226m'
@@ -125,3 +125,6 @@ print_heart "${HEARTLINE13}" "${BLU}" "${PNK}"
 print_heart "${HEARTLINE14}" "${BLU}" "${LBL}"
 print_heart "${HEARTLINE15}" "${PUR}" "${LBL}"
 print_heart "${HEARTLINE16}" "${PUR}" "${LBL}"
+
+# silence this warning on Mac
+export BASH_SILENCE_DEPRECATION_WARNING=1
