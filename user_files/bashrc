@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+	*i*) ;;
+		*) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -25,41 +25,41 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Set the PS1 heart options.
+# Set the PS1 prompt options.
 # Set the color.
 machine=""
 [ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
 
 if [ "$machine" == "corriander" ]; then
-	heart_foreground='\[\033[38;5;4m\]'	# blue
+	prompt_foreground='\[\033[38;5;4m\]'	# blue
 elif [ "$machine" == "pepper" ]; then
-	heart_foreground='\[\033[38;5;2m\]'	# green
+	prompt_foreground='\[\033[38;5;2m\]'	# green
 elif [ "$machine" == "ginger" ]; then
-	heart_foreground='\[\033[38;5;11m\]'	# yellow
+	prompt_foreground='\[\033[38;5;11m\]'	# yellow
 elif [ "$machine" == "cilantro" ]; then
-	heart_foreground='\[\033[38;5;6m\]'	# teal
+	prompt_foreground='\[\033[38;5;6m\]'	# teal
 elif [ "$machine" == "work" ]; then
-	heart_foreground='\[\033[38;5;1m\]'	# red
+	prompt_foreground='\[\033[38;5;1m\]'	# red
 else
-	heart_foreground='' # default to white
+	prompt_foreground='' # default to white
 fi
 # Set the background if root.
 if [ $(whoami) == "root" ]; then
-	heart_background='\[\033[48;5;15m\]'
-	heart_background_escape='\[$(tput sgr0)\]'
+	prompt_background='\[\033[48;5;15m\]'
+	prompt_background_escape='\[$(tput sgr0)\]'
 else
-	heart_background=''
-	heart_background_escape=''
+	prompt_background=''
+	prompt_background_escape=''
 fi
 # Set whether to use the emoji or the emoticon
 if [ $no_emoji ]; then
-	heart='<3'
+	prompt_char='$'
 else
-	heart='❤'
+	prompt_char='😎'
 fi
 
 # Set the prompt
-PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${heart_foreground}${heart_background}${heart}\[\033[38;5;15m\] ${heart_background_escape}"
+PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_foreground}${prompt_background}${prompt_char}\[\033[38;5;15m\] ${prompt_background_escape}"
 
 # Aliases
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
@@ -69,11 +69,11 @@ PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${heart_foreground}${heart_backgro
 
 # Enable bash completion
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 # Print cute heart
