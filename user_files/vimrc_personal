@@ -1,0 +1,5 @@
+" TODO
+
+" Yaml does not support tabs. Use 2-spaces.
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal expandtab

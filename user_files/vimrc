@@ -52,16 +52,8 @@ set scrolloff=4
 " Enable colors on airline
 set t_Co=256
 
-" TODO research and set these
-" tabs and indents
-"set shiftwidth=4
-"set tabstop=4
-"set smartindent
-"set backspace=2
-"set softtabstop=4
-"filetype indent on
-" Set tabs for filetypes
-"autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" Handle tab/spaces and other things in work/personal files
+source ~/.myconfig/user_files/vimrc_work
 
 " Highlight search matches
 set hlsearch
