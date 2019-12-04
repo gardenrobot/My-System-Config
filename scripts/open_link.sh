@@ -12,7 +12,7 @@ function open_in_browser {
 }
 
 function open_in_local_viewer {
-	mkdir /tmp/open_link.sh/
+	mkdir -p /tmp/open_link.sh/
 	tmp_fn="/tmp/open_link.sh/$(date +%s)"
 	wget --output-document=${tmp_fn} "$1"
 	if [ "$(which sw_vers)" ]; then
