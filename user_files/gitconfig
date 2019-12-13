@@ -6,3 +6,5 @@
 	co = checkout
 [color "diff"]
 	meta = blue bold
+[core]
+	hooksPath = /Users/sclotfelter/.git/hooks
