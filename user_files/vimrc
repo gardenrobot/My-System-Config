@@ -105,11 +105,11 @@ nnoremap - <C-x>
 " In visual mode, * will put the current selection in a search
 " TODO make it so the search does not advance to the next match
 ":let @/='foobar'
-"vnoremap <silent> * :<C-U>
-"  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-"  \gvy/<C-R><C-R>=substitute(
-"  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-"  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 function! s:get_visual_selection()
     let [line_start, column_start] = getpos("'<")[1:2]
