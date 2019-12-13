@@ -14,3 +14,7 @@ set expandtab
 
 " Pressing backspace deletes 4 spaces.
 set backspace=2
+
+" Use 2-spaces for yaml
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal expandtab
