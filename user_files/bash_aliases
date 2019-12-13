@@ -42,3 +42,5 @@ alias k=kubectl
 alias ansi='ansible-playbook -i hosts playbook.yml'
 
 alias mus='cd ~/music && cmus'
+
+alias ffind='find . -name '
