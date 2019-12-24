@@ -94,6 +94,9 @@ vnoremap < <<CR>gvh
 nnoremap + <C-a>
 nnoremap - <C-x>
 
+" In insert mode, press jj to exit
+:imap jj <Esc>
+
 " TODO when searching and press :, create a s/// with the current selection as the thing to replace. Put the cursor place to type the replacement.
 
 " TODO keybindings to comment/uncomment. Filetype specific.
