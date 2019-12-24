@@ -59,7 +59,7 @@ else
 fi
 
 # Set the prompt
-PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_foreground}${prompt_background}${prompt_char}\[\033[38;5;15m\] ${prompt_background_escape}"
+PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_foreground}${prompt_background}${prompt_char}\[\033[38;5;15m\] ${prompt_background_escape}\[$(tput sgr0)\]"
 
 # Aliases
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
@@ -108,6 +108,7 @@ NC='\\033[0m'
 print_heart() {
 	TMP=$(printf "${1}" | sed "s/\(__*\)/$3\1/g" | sed "s/\([░▒▓█][░▒▓█]*\)/$2\1/g")
 	echo -e "$TMP"
+	echo -n "$(tput sgr0)"
 }
 print_heart "${HEARTLINE01}" "${BLK}" "${LBL}"
 print_heart "${HEARTLINE02}" "${BLK}" "${LBL}"
