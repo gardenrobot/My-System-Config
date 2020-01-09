@@ -45,19 +45,19 @@
 "thunar ~"
    Control+Alt + s
 
-"brightness down ; notify-send -t 2000 \"Brightness: $(brightness get)\""
+"xbacklight -dec 10 ; notify-send -t 2000 \"Brightness: $(xbacklight -get)\""
    F6
 
-"brightness up ; notify-send -t 2000 \"Brightness: $(brightness get)\""
+"xbacklight -inc 10 ; notify-send -t 2000 \"Brightness: $(xbacklight -get)\""
    F7
 
-"volume mute ; notify-send -t 2000 \"$(volume get)\""
+"amixer -D pulse sset Master playback toggle"
    F8
 
-"volume down ; notify-send -t 2000 \"$(volume get)\""
+"amixer -D pulse sset Master 5%-"
    F9
 
-"volume up ; notify-send -t 2000 \"$(volume get)\""
+"amixer -D pulse sset Master 5%+"
    F10
 
 "cmus-remote --prev"

@@ -18,7 +18,7 @@ function open_in_local_viewer {
 	if [ "$(which sw_vers)" ]; then
 		open -a 'Preview' "$tmp_fn"
 	else
-		gpicview "$tmp_fn" # TODO use preferred image application
+		ristretto "$tmp_fn" # TODO use preferred image application
 	fi
 }
 
