@@ -1,3 +1,7 @@
+" Display tabs as 4 spaces.
+set tabstop=4
+set softtabstop=4
+
 " Make tab characters visible
 set list
 set listchars=tab:▸\ 
