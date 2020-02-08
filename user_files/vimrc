@@ -53,7 +53,7 @@ set scrolloff=4
 set t_Co=256
 
 " Handle tab/spaces and other things in work/personal files
-source ~/.myconfig/user_files/vimrc_work
+source ~/.myconfig/user_files/vimrc_personal
 
 " Highlight search matches
 set hlsearch
