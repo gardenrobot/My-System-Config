@@ -68,7 +68,7 @@ set tabpagemax=200
 nnoremap # :%s/<c-r>///gn<ESC>
 
 " Press Ctrl-s in normal mode to save
-nnoremap <c-s> :w<CR>
+nnoremap <c-s> :wa<CR>
 
 " Ctrl-l redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
