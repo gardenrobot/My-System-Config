@@ -44,3 +44,6 @@ alias ansi='ansible-playbook -i hosts playbook.yml'
 alias mus='cd ~/music && cmus'
 
 alias ffind='find . -name '
+
+alias youtube-dl-playlist='youtube-dl -o "TRACKNUM%(playlist_index)sTRACKNUMEND%(title)s.%(ext)s" -x --audio-format mp3 '
+alias youtube-dl-song='youtube-dl -o "%(title)s.%(ext)s" -x --audio-format mp3 '
