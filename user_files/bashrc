@@ -76,56 +76,9 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-# Print cute heart
-HEARTLINE01='_░▒███████_______________'
-HEARTLINE02='░██▓▒_░▒▓██______________'
-HEARTLINE03='██▓▒░__░▒▓██___██████____'
-HEARTLINE04='██▓▒░____░▓███▓__░▒▓██___'
-HEARTLINE05='██▓▒░___░▓██▓_____░▒▓██__'
-HEARTLINE06='██▓▒░_______________░▒▓██'
-HEARTLINE07='_██▓▒░______________░▒▓██'
-HEARTLINE08='__██▓▒░____________░▒▓██_'
-HEARTLINE09='___██▓▒░__________░▒▓██__'
-HEARTLINE10='____██▓▒░________░▒▓██___'
-HEARTLINE11='_____██▓▒░_____░▒▓██_____'
-HEARTLINE12='______██▓▒░__░▒▓██_______'
-HEARTLINE13='_______█▓▒░░▒▓██_________'
-HEARTLINE14='_________░▒▓██___________'
-HEARTLINE15='_______░▒▓██_____________'
-HEARTLINE16='_____░▒▓██_______________'
-BLK='\\033[0;30m'
-BRN='\\033[0;90m' # This is color code for light black. Set to brown in terminal settings.
-RED='\\033[0;31m'
-ORA='\\033[38;5;208m'
-YEL='\\033[38;5;226m'
-GRN='\\033[0;32m'
-BLU='\\033[0;34m'
-PUR='\\033[0;35m'
-LBL='\\033[38;5;32m'
-PNK='\\033[38;5;13m'
-WHT='\\033[1;37m'
-NC='\\033[0m'
-print_heart() {
-	TMP=$(printf "${1}" | sed "s/\(__*\)/$3\1/g" | sed "s/\([░▒▓█][░▒▓█]*\)/$2\1/g")
-	echo -e "$TMP"
-	echo -n "$(tput sgr0)"
-}
-print_heart "${HEARTLINE01}" "${BLK}" "${LBL}"
-print_heart "${HEARTLINE02}" "${BLK}" "${LBL}"
-print_heart "${HEARTLINE03}" "${BRN}" "${LBL}"
-print_heart "${HEARTLINE04}" "${BRN}" "${PNK}"
-print_heart "${HEARTLINE05}" "${RED}" "${PNK}"
-print_heart "${HEARTLINE06}" "${RED}" "${PNK}"
-print_heart "${HEARTLINE07}" "${ORA}" "${WHT}"
-print_heart "${HEARTLINE08}" "${ORA}" "${WHT}"
-print_heart "${HEARTLINE09}" "${YEL}" "${WHT}"
-print_heart "${HEARTLINE10}" "${YEL}" "${WHT}"
-print_heart "${HEARTLINE11}" "${GRN}" "${PNK}"
-print_heart "${HEARTLINE12}" "${GRN}" "${PNK}"
-print_heart "${HEARTLINE13}" "${BLU}" "${PNK}"
-print_heart "${HEARTLINE14}" "${BLU}" "${LBL}"
-print_heart "${HEARTLINE15}" "${PUR}" "${LBL}"
-print_heart "${HEARTLINE16}" "${PUR}" "${LBL}"
+# Print pride flag
+[ -r ~/.bash-pride-flags/short.sh ] && . ~/.bash-pride-flags/short.sh
+echo
 
 # silence this warning on Mac
 export BASH_SILENCE_DEPRECATION_WARNING=1
