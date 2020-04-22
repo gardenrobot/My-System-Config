@@ -45,5 +45,23 @@ alias mus='cd ~/music && cmus'
 
 alias ffind='find . -name '
 
-alias youtube-dl-playlist='youtube-dl -o "TRACKNUM%(playlist_index)sTRACKNUMEND%(title)s.%(ext)s" -x --audio-format mp3 '
 alias youtube-dl-song='youtube-dl -o "%(title)s.%(ext)s" -x --audio-format mp3 '
+function youtube-dl-playlist {
+    yt_link=$1
+    album_name=$2
+    #youtube-dl -o "TRACKNUM%(playlist_index)sTRACKNUMEND%(title)s.%(ext)s" -k -x --audio-format mp3 $yt_link
+    for i in TRACKNUM*.mp3; do
+        echo "modifying" "$i"
+        tracknum=$(echo $i | sed 's/TRACKNUM\(.*\)TRACKNUMEND.*/\1/')
+        videoname=$(echo $i | sed 's/^.*TRACKNUMEND\(.*\)/\1/')
+        #id3v2 --track $tracknum "$i"
+        #cp "$i" "$videoname"
+
+        if [ "$album_name" ]; then
+            # remove album name from titles
+            video_name_no_album=$(echo $videoname | sed "s/ - $album_name//")
+            echo $video_name_no_album
+            mv "$videoname" "$video_name_no_album"
+        fi
+    done
+}
