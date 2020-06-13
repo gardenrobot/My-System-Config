@@ -19,7 +19,7 @@ alias gs='git status'
 
 alias du='du -hs'
 
-alias df='df -h | grep -E --color=never "(Filesystem)|(/dev/sd)|(galliumos)"'
+alias df='df -h'
 
 alias grep='grep --color'
 alias ag='ag --color-path=35'
