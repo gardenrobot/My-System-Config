@@ -48,20 +48,38 @@ alias ffind='find . -name '
 alias youtube-dl-song='youtube-dl -o "%(title)s.%(ext)s" -x --audio-format mp3 '
 function youtube-dl-playlist {
     yt_link=$1
-    album_name=$2
-    #youtube-dl -o "TRACKNUM%(playlist_index)sTRACKNUMEND%(title)s.%(ext)s" -k -x --audio-format mp3 $yt_link
-    for i in TRACKNUM*.mp3; do
+    mkdir -p ./tmp/
+    (cd ./tmp && youtube-dl --verbose -o "TRACKNUM%(playlist_index)sTRACKNUMEND%(title)s.%(ext)s" -k -x --audio-format mp3 $yt_link)
+    for i in ./tmp/TRACKNUM*.mp3; do
         echo "modifying" "$i"
-        tracknum=$(echo $i | sed 's/TRACKNUM\(.*\)TRACKNUMEND.*/\1/')
+        tracknum=$(echo $i | sed 's/\.\/tmp\/TRACKNUM\(.*\)TRACKNUMEND.*/\1/')
         videoname=$(echo $i | sed 's/^.*TRACKNUMEND\(.*\)/\1/')
-        #id3v2 --track $tracknum "$i"
-        #cp "$i" "$videoname"
+        echo $tracknum
+        echo $videoname
+        id3v2 --track $tracknum "$i"
+        cp "$i" "$videoname"
+    done
+    echo
+    echo
+    echo 'Commands to run:'
+    echo 'Set album: id3v2 --artist $ALBUM_NAME *mp3'
+    echo 'Remove xyz from filenames: rename -n ''s/xyz//'' *.mp3'
+    echo 'Set track names: set-all-track-names'
+    echo 'Delete temp: rm tmp'
+}
 
-        if [ "$album_name" ]; then
-            # remove album name from titles
-            video_name_no_album=$(echo $videoname | sed "s/ - $album_name//")
-            echo $video_name_no_album
-            mv "$videoname" "$video_name_no_album"
-        fi
+function set-all-track-names {
+    for i in *.mp3; do
+        track=$(echo $i | sed 's/\.mp3//')
+        id3v2 --song "$track" "$i"
     done
 }
+
+alias awk1="awk '{print $1}'"
+alias awk2="awk '{print $2}'"
+alias awk3="awk '{print $3}'"
+
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
