@@ -1,5 +1,5 @@
 # Mac's ls has a different option for colored output
-if [ "$(which sw_vers)" ]; then
+if [ "$(which sw_vers 2> /dev/null)" ]; then
 	color_opt="-G"
 else
 	color_opt="--color"
@@ -31,7 +31,7 @@ alias vim='echo no use vi'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-if [ "$(which sw_vers)" ]; then
+if [ "$(which sw_vers 2> /dev/null)" ]; then
 	alias alert='osascript -e "display alert \"command finished\""'
 else
 	alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "command finished"'
