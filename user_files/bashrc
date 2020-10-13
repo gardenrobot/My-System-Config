@@ -35,8 +35,8 @@ if [ "$machine" == "corriander" ]; then
 elif [ "$machine" == "pepper" ]; then
     prompt_foreground='\[\033[38;5;2m\]'    # green
 elif [ "$machine" == "ginger" ]; then
-    prompt_foreground='\[\033[38;5;11m\]'    # yellow
-elif [ "$machine" == "cilantro" ]; then
+    prompt_foreground='\[\033[38;5;11m\]'   # yellow
+elif [ "$machine" == "allspice" ]; then
     prompt_foreground='\[\033[38;5;6m\]'    # teal
 elif [ "$machine" == "work" ]; then
     prompt_foreground='\[\033[38;5;1m\]'    # red
