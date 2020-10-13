@@ -51,10 +51,8 @@ else
     prompt_background=''
     prompt_background_escape=''
 fi
-# Set whether to use the emoji or the emoticon
-if [ $no_emoji ]; then
-    prompt_char='$'
-else
+# Set default prompt character
+if [ "$prompt_char" == "" ]; then
     prompt_char='$'
 fi
 
@@ -78,7 +76,6 @@ fi
 
 # Print pride flag
 [ -r ~/.bash-pride-flags/short.sh ] && . ~/.bash-pride-flags/short.sh
-echo
 
 # silence this warning on Mac
 export BASH_SILENCE_DEPRECATION_WARNING=1
