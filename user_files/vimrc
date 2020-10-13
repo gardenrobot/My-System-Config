@@ -52,9 +52,6 @@ set scrolloff=4
 " Enable colors on airline
 set t_Co=256
 
-" Handle tab/spaces and other things in work/personal files
-source ~/.myconfig/user_files/vimrc_personal
-
 " Highlight search matches
 set hlsearch
 
@@ -125,3 +122,28 @@ function! s:get_visual_selection()
     let lines[0] = lines[0][column_start - 1:]
     return join(lines, "\n")
 endfunction
+
+" Display tabs as 4 spaces.
+set tabstop=4
+set softtabstop=4
+
+" Make tab characters visible
+set list
+set listchars=tab:▸\ 
+
+" Shifting one indent will shift by 4 spaces.
+set shiftwidth=4
+
+" Pressing tab key creates 4 spaces.
+set expandtab
+
+" Pressing backspace deletes 4 spaces.
+set backspace=2
+
+" Use 2-spaces for yaml and cfg
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml setlocal expandtab
+autocmd FileType cfg  setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType cfg  setlocal expandtab
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby setlocal expandtab
