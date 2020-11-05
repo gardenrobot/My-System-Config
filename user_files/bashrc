@@ -40,8 +40,6 @@ elif [ "$machine" == "allspice" ]; then
     prompt_foreground='\[\033[38;5;6m\]'    # teal
 elif [ "$machine" == "work" ]; then
     prompt_foreground='\[\033[38;5;1m\]'    # red
-else
-    prompt_foreground='' # default to white
 fi
 # Set the background if root.
 if [ $(whoami) == "root" ]; then
