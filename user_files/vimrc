@@ -140,6 +140,9 @@ set expandtab
 " Pressing backspace deletes 4 spaces.
 set backspace=2
 
+" Indent when pressing enter. Pretty dumb.
+set cindent
+
 " Use 2-spaces for yaml and cfg
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal expandtab
