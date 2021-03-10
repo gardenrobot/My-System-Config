@@ -25,43 +25,17 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Set the PS1 prompt options.
-# Set the color.
-machine=""
-[ -r ~/.bashrc_machine ] && . ~/.bashrc_machine
-
-if [ "$machine" == "corriander" ]; then
-    prompt_foreground='\[\033[38;5;4m\]'    # blue
-elif [ "$machine" == "pepper" ]; then
-    prompt_foreground='\[\033[38;5;2m\]'    # green
-elif [ "$machine" == "ginger" ]; then
-    prompt_foreground='\[\033[38;5;11m\]'   # yellow
-elif [ "$machine" == "allspice" ]; then
-    prompt_foreground='\[\033[38;5;6m\]'    # teal
-elif [ "$machine" == "work" ]; then
-    prompt_foreground='\[\033[38;5;1m\]'    # red
-fi
-# Set the background if root.
-if [ $(whoami) == "root" ]; then
-    prompt_background='\[\033[48;5;15m\]'
-    prompt_background_escape='\[$(tput sgr0)\]'
-else
-    prompt_background=''
-    prompt_background_escape=''
-fi
-# Set default prompt character
-if [ "$prompt_char" == "" ]; then
-    prompt_char='$'
-fi
-
-# Set the prompt
-PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_foreground}${prompt_background}${prompt_char}\[\033[38;5;15m\] ${prompt_background_escape}\[$(tput sgr0)\]"
+# Set the P1 prompt options
+prompt_char="\[\033[38;5;1m\]$"
 
 # Aliases
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
 
 # Machine Specific bashrc
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
+
+# Set the prompt
+PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_char}\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
 # Enable bash completion
 if ! shopt -oq posix; then

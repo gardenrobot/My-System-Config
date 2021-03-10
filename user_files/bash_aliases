@@ -83,3 +83,5 @@ alias kd='kubectl describe'
 alias kdp='kubectl describe pod'
 alias kl='kubectl logs'
 alias klf='kubectl logs -f'
+
+alias vba='source venv/bin/activate'
