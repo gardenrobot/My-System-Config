@@ -33,9 +33,20 @@ prompt_char="\[\033[38;5;1m\]$"
 
 # Machine Specific bashrc
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
+for f in ~/.bashrc.d/*; do source $f; done
+
+git_branch() {
+    branch=$(git branch --show-current 2> /dev/null)
+    if [ -n "$branch" ]; then
+        echo "\[\033[38;5;2m\][$branch] "
+    fi
+}
 
 # Set the prompt
-PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w ${prompt_char}\[\033[38;5;15m\] \[$(tput sgr0)\]"
+set_ps1() {
+    PS1="\[\033[38;5;128m\]\u\[\033[38;5;15m\] \w $(git_branch)${prompt_char}\[\033[38;5;15m\] \[$(tput sgr0)\]"
+}
+PROMPT_COMMAND=set_ps1
 
 # Enable bash completion
 if ! shopt -oq posix; then
@@ -49,5 +60,8 @@ fi
 # Print pride flag
 [ -r ~/.bash-pride-flags/short.sh ] && . ~/.bash-pride-flags/short.sh
 
+# For when the computer is doing a good job
+alias thank-you='echo "you'"'"'re welcome <3"'
+
 # silence this warning on Mac
-export BASH_SILENCE_DEPRECATION_WARNING=1
+#export BASH_SILENCE_DEPRECATION_WARNING=1
