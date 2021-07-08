@@ -24,8 +24,6 @@ alias df='df -h'
 alias grep='grep --color'
 alias ag='ag --color-path=35'
 
-alias thanks="echo you\'re welcome! \<3"
-
 # to train myself to use vi command
 alias vim='echo no use vi'
 

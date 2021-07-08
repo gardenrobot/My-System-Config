@@ -12,6 +12,7 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'ciaranm/detectindent'
+Plugin 'georgewitteman/vim-fish'
 call vundle#end()
 
 " Run bash aliases from inside vim. Run this command to get this to work.
