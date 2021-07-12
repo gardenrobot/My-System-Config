@@ -41,7 +41,6 @@ alias lla='ls $color_opt -lAhF'
 alias pvi='vi -'
 alias vi='vi -p'
 
-echo a
 alias gs='git status'
 
 alias du='du -hs'
