@@ -7,7 +7,7 @@ function fish_prompt
     else
         echo -n (set_color red)"$err [>_<] "
     end
-    echo -n (set_color normal)$PWD(set_color red)" "
+    echo -n (set_color normal)(prompt_pwd)(set_color red)" "
     if set -q prompt_char
         echo -n "$prompt_char"
     else
