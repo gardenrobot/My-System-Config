@@ -1,4 +1,7 @@
-source ~/.config/fish/config_local.fish
+set -l local_config ~/.config/fish/config_local.fish
+if test -f $local_config
+    source $local_config
+end
 
 function fish_prompt
     set -l err $status
