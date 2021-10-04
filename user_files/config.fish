@@ -64,5 +64,7 @@ end
 
 #alias mus='cd ~/music && cmus'
 
-alias vba='source venv/bin/activate'
-alias vba2='source venv2/bin/activate'
+alias vba='source venv/bin/activate.fish'
+alias vba2='source venv2/bin/activate.fish'
+
+alias dc=docker-compose
