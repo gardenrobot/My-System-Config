@@ -69,17 +69,10 @@ alias vba2='source venv2/bin/activate.fish'
 
 alias dc=docker-compose
 
-function pushit
-    git push | tee /tmp/gitpush
-    # if git push failed bc of missing upstream
-    if test "(grep 'fatal: The current branch' /tmp/gitpush)"
-        set -l branch (git branch --show-current)
-        git push --set-upstream origin $branch
-    end
-end
-
 function pr
     set -l repo (basename (git rev-parse --show-toplevel))
     set -l branch (git branch --show-current)
     open "https://github.com/truenorthfleet/$repo/pull/new/$branch"
 end
+
+alias nb="git push --set-upstream origin (git branch --show-current)"

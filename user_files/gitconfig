@@ -8,5 +8,5 @@
     meta = blue bold
 [core]
     hooksPath = /Users/sclotfelter/.git/hooks
-[pull]
-    rebase = false
+#[pull]
+#    rebase = false

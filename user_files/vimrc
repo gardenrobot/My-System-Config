@@ -155,3 +155,5 @@ autocmd FileType cfg  setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType cfg  setlocal expandtab
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal expandtab
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html setlocal expandtab
