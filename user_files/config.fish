@@ -30,7 +30,7 @@ set fish_greeting
 alias thank-you='echo "You'"'"'re welcome! <3"'
 
 # Mac's ls has a different option for colored output
-if which sw_vers
+if which sw_vers > /dev/null
     set color_opt "-G"
 else
     set color_opt "--color"
@@ -56,7 +56,7 @@ alias ag='ag --color-path=35'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-if which sw_vers
+if which sw_vers > /dev/null
     alias alert='osascript -e "display alert \"command finished\""'
 else
     alias alert='notify-send --urgency=critical "command finished"'
@@ -68,3 +68,18 @@ alias vba='source venv/bin/activate.fish'
 alias vba2='source venv2/bin/activate.fish'
 
 alias dc=docker-compose
+
+function pushit
+    git push | tee /tmp/gitpush
+    # if git push failed bc of missing upstream
+    if test "(grep 'fatal: The current branch' /tmp/gitpush)"
+        set -l branch (git branch --show-current)
+        git push --set-upstream origin $branch
+    end
+end
+
+function pr
+    set -l repo (basename (git rev-parse --show-toplevel))
+    set -l branch (git branch --show-current)
+    open "https://github.com/truenorthfleet/$repo/pull/new/$branch"
+end

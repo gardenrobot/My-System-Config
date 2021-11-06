@@ -144,6 +144,10 @@ set backspace=2
 " Indent when pressing enter. Pretty dumb.
 set cindent
 
+" These prevent an issue in python files where typing # removes the current indent.
+set cinkeys-=0#
+set indentkeys-=0#
+
 " Use 2-spaces for yaml and cfg
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal expandtab
