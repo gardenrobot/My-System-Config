@@ -76,3 +76,5 @@ function pr
 end
 
 alias nb="git push --set-upstream origin (git branch --show-current)"
+
+alias m=micro
