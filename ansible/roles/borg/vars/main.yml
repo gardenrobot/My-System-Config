@@ -1,3 +1,0 @@
-borg_repo: '/mnt/usb1/borgbackups'
-
-script_location: '/usr/bin/borg-backup.sh'

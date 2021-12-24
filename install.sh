@@ -12,3 +12,5 @@ ln -sf $DIR/git_hooks ~/.git/hooks
 ln -sf $DIR/tmux.conf ~/.tmux.conf
 ln -sf $DIR/vimrc ~/.vimrc
 ln -sf $DIR/xbindkeysrc ~/.xbindkeysrc
+mkdir -p ~/.bashrc.d/
+touch ~/.bashrc.d/local
