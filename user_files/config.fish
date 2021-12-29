@@ -70,11 +70,12 @@ alias vba2='source venv2/bin/activate.fish'
 alias dc=docker-compose
 
 function pr
-    set -l repo (basename (git rev-parse --show-toplevel))
+    #set -l repo (basename (git rev-parse --show-toplevel))
+    set -l repo (git remote get-url origin | sed 's#.*/\(.*\)\.git#\1#')
     set -l branch (git branch --show-current)
     open "https://github.com/truenorthfleet/$repo/pull/new/$branch"
 end
 
-alias nb="git push --set-upstream origin (git branch --show-current)"
+alias pushit="git push --set-upstream origin (git branch --show-current)"
 
-alias m=micro
+alias mi=micro
