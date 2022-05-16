@@ -9,6 +9,9 @@ ln -sf $DIR/config.fish ~/.config/fish/config.fish
 ln -sf $DIR/gitconfig ~/.gitconfig
 mkdir -p ~/.git
 ln -sf $DIR/git_hooks ~/.git/hooks
+mkdir -p ~/.config/micro
+ln -sf $DIR/micro_settings.json ~/.config/micro/settings.json
+ln -sf $DIR/micro_bindings.json ~/.config/micro/bindings.json
 ln -sf $DIR/tmux.conf ~/.tmux.conf
 ln -sf $DIR/vimrc ~/.vimrc
 ln -sf $DIR/xbindkeysrc ~/.xbindkeysrc
