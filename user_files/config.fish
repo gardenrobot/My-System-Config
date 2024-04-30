@@ -1,3 +1,5 @@
+#!/bin/fish
+
 set -l local_config ~/.config/fish/config_local.fish
 if test -f $local_config
     source $local_config
@@ -14,7 +16,7 @@ function fish_prompt
     if set -q prompt_char
         echo -n "$prompt_char"
     else
-        echo -n '$'
+        echo -n '<3'
     end
     if set -q fish_git_prompt
         echo -n (set_color green)(fish_git_prompt)" "
@@ -78,3 +80,5 @@ end
 alias pushit="git push --set-upstream origin (git branch --show-current)"
 
 alias mi=micro
+
+set -gx EDITOR vim
