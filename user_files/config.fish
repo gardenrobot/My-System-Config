@@ -7,12 +7,17 @@ end
 
 function fish_prompt
     set -l err $status
+    set -l git_branch (git branch 2>/dev/null | sed -n '/\* /s///p')
     if test $err -eq 0
         echo -n (set_color cyan)"[^_^] "
     else
         echo -n (set_color red)"$err [>_<] "
     end
-    echo -n (set_color yellow)(prompt_hostname)(set_color brblack)":"(set_color normal)(prompt_pwd)(set_color red)" "
+    echo -n (set_color magenta)$USER(set_color black)@(set_color yellow)(prompt_hostname)(set_color brblack)":"(set_color normal)(prompt_pwd)" "
+    if set -q git_branch
+        echo -n (set_color blue)"($git_branch) "
+    end
+    echo -n (set_color red)
     if set -q prompt_char
         echo -n "$prompt_char"
     else
