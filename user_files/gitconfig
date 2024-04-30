@@ -10,3 +10,5 @@
 #    hooksPath = /Users/sclotfelter/.git/hooks
 [pull]
     rebase = false
+[init]
+    defaultBranch = main
