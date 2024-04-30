@@ -144,8 +144,9 @@ set backspace=2
 " Indent when pressing enter. Pretty dumb.
 set cindent
 
-" These prevent an issue in python files where typing # removes the current indent.
+" Stop vim from yeeting the current line's indentation when pressing certain characters.
 set cinkeys-=0#
+set cinkeys-=:
 set indentkeys-=0#
 
 " Use 2-spaces for yaml and cfg
