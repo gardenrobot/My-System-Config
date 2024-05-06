@@ -31,10 +31,6 @@ prompt_char="\[\033[38;5;1m\]$"
 # Aliases
 [ -r ~/.bash_aliases ] && . ~/.bash_aliases
 
-# Machine Specific bashrc
-[ -r ~/.bashrc_local ] && . ~/.bashrc_local
-for f in ~/.bashrc.d/*; do source $f; done
-
 git_branch() {
     branch=$(git branch --show-current 2> /dev/null)
     if [ -n "$branch" ]; then
@@ -65,3 +61,7 @@ alias thank-you='echo "you'"'"'re welcome <3"'
 
 # silence this warning on Mac
 #export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Machine Specific bashrc
+[ -r ~/.bashrc_local ] && . ~/.bashrc_local
+for f in ~/.bashrc.d/*; do source $f; done
