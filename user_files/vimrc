@@ -158,3 +158,10 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal expandtab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html setlocal expandtab
+
+" Continue comment headers (//, #) on new line
+set formatoptions+=ro
+
+" Wrap rust's triple slash documentation comments
+set comments^=:///
+set comments^=://!
