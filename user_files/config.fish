@@ -48,8 +48,8 @@ alias la='ls $color_opt -AhF'
 alias ll='ls $color_opt -lhF'
 alias lla='ls $color_opt -lAhF'
 
-alias pvi='vi -'
-alias vi='vi -p'
+alias pvi='vim -'
+alias vi='vim -p'
 
 alias gs='git status'
 
