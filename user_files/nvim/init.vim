@@ -1,20 +1,6 @@
 " Plugin manager. If Vundle is not installed, run this command:
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 set nocompatible
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"Plugin 'bronson/vim-trailing-whitespace'
-"Plugin 'junegunn/vim-easy-align'
-"Plugin 'will133/vim-dirdiff'
-"Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-""Plugin 'tpope/vim-fugitive'
-"Plugin 'airblade/vim-gitgutter'
-""Plugin 'ciaranm/detectindent'
-"Plugin 'georgewitteman/vim-fish'
-"Plugin 'neoclide/coc.nvim'
-"call vundle#end()
 
 call plug#begin()
 Plug 'bronson/vim-trailing-whitespace'

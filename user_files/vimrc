@@ -1,19 +1,19 @@
 " Plugin manager. If Vundle is not installed, run this command:
-" git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vi +VundleInstall +qa
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 set nocompatible
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'will133/vim-dirdiff'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-"Plugin 'ciaranm/detectindent'
-Plugin 'georgewitteman/vim-fish'
-call vundle#end()
+
+call plug#begin()
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'junegunn/vim-easy-align'
+Plug 'will133/vim-dirdiff'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"Plug 'ciaranm/detectindent'
+Plug 'georgewitteman/vim-fish'
+call plug#end()
 
 " Run bash aliases from inside vim. Run this command to get this to work.
 " echo -e "shopt -s expand_aliases\nsource ~/.bash_aliases" > ~/.vimrc_bash
@@ -148,6 +148,7 @@ set cindent
 set cinkeys-=0#
 set cinkeys-=:
 set indentkeys-=0#
+set cinoptions+=(s,m1
 
 " Use 2-spaces for yaml and cfg
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -165,3 +166,5 @@ set formatoptions+=ro
 " Wrap rust's triple slash documentation comments
 set comments^=:///
 set comments^=://!
+
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
