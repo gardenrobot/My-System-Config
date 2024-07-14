@@ -166,5 +166,3 @@ set formatoptions+=ro
 " Wrap rust's triple slash documentation comments
 set comments^=:///
 set comments^=://!
-
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"

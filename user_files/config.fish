@@ -50,6 +50,7 @@ alias lla='ls $color_opt -lAhF'
 
 alias pvi='vim -'
 alias vi='vim -p'
+alias nv='nvim -p'
 
 alias gs='git status'
 
@@ -74,7 +75,7 @@ end
 alias vba='source venv/bin/activate.fish'
 alias vba2='source venv2/bin/activate.fish'
 
-alias dc=docker-compose
+alias dc="docker compose"
 
 function pr
     set -l repo (git remote get-url origin | sed 's#.*/\(.*\)\.git#\1#')

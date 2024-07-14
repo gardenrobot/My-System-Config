@@ -13,7 +13,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 "Plug 'ciaranm/detectindent'
 Plug 'georgewitteman/vim-fish'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'npm ci' }
+Plug 'luizribeiro/vim-cooklang', { 'for': 'cook' }
+Plug 'https://github.com/adelarsq/vim-matchit'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Run bash aliases from inside vim. Run this command to get this to work.
@@ -169,3 +172,5 @@ set comments^=:///
 set comments^=://!
 
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+"let g:coc_node_path = '/home/sambot/.nvm/versions/node/v16.18.1/bin/node'
