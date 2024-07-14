@@ -65,3 +65,4 @@ alias thank-you='echo "you'"'"'re welcome <3"'
 # Machine Specific bashrc
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
 for f in ~/.bashrc.d/*; do source $f; done
+. "$HOME/.cargo/env"
