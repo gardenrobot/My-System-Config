@@ -88,3 +88,5 @@ alias pushit="git push --set-upstream origin (git branch --show-current)"
 alias mi=micro
 
 set -gx EDITOR vim
+
+bind \b backward-kill-bigword
