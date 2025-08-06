@@ -18,3 +18,6 @@ ln -sf $DIR/vimrc ~/.vimrc
 ln -sf $DIR/xbindkeysrc ~/.xbindkeysrc
 mkdir -p ~/.bashrc.d/
 touch ~/.bashrc.d/local
+mkdir -p ~/.ssh/config.d/
+echo 'Include config.d/*' > ~/.ssh/config
+ln -sf $DIR/ssh_config ~/.ssh/config.d/global

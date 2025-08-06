@@ -1,0 +1,5 @@
+# Reuse connections
+Host *
+  ControlMaster    auto
+  ControlPath      ~/.ssh/%r@%h:%p.sock
+  ControlPersist   yes
