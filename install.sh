@@ -21,3 +21,4 @@ touch ~/.bashrc.d/local
 mkdir -p ~/.ssh/config.d/
 echo 'Include config.d/*' > ~/.ssh/config
 ln -sf $DIR/ssh_config ~/.ssh/config.d/global
+ln -sf $DIR/user_files/zellij_config.kdl ~/.config/zellij/config.kdl
