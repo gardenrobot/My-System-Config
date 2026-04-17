@@ -37,7 +37,7 @@ set fish_greeting
 alias thank-you='echo "You'"'"'re welcome! <3"'
 
 # Mac's ls has a different option for colored output
-if which sw_vers > /dev/null
+if which sw_vers > /dev/null 2> /dev/null
     set color_opt "-G"
 else
     set color_opt "--color"
@@ -64,7 +64,7 @@ alias ag='ag --color-path=35'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
-if which sw_vers > /dev/null
+if which sw_vers > /dev/null 2> /dev/null
     alias alert='osascript -e "display alert \"command finished\""'
 else
     alias alert='notify-send --urgency=critical "command finished"'
